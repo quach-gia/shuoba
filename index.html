@@ -260,8 +260,73 @@ footer{text-align:center;padding:32px;color:var(--gray);font-size:13px;backgroun
 .drama-pinyin{font-size:13px;color:var(--gold);}
 .drama-question{color:white;font-size:14px;font-weight:600;margin:16px 0 10px;}
 
-@media(max-width:768px){nav{padding:12px 16px;}.nav-logo span{display:none;}.problem-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}.speed-options,.tone-options-grid{grid-template-columns:1fr;}.paths-grid{grid-template-columns:1fr 1fr;}.char-grid{grid-template-columns:1fr 1fr;}.survey-grid{grid-template-columns:1fr;}}
-@media(max-width:480px){.paths-grid,.char-grid{grid-template-columns:1fr;}.slot-reel{width:64px;height:80px;font-size:28px;}}
+@media(max-width:768px){
+  nav{padding:10px 16px;}
+  .nav-logo{font-size:20px;}
+  .nav-logo span{display:none;}
+  .nav-cta{padding:8px 16px;font-size:13px;}
+  .hero{padding:120px 16px 60px;min-height:auto;}
+  .hero::before{font-size:150px;}
+  .hero h1{font-size:28px;}
+  .hero p{font-size:15px;margin-bottom:24px;}
+  .hero-buttons{flex-direction:column;align-items:center;gap:10px;}
+  .btn-primary,.btn-secondary{width:100%;max-width:300px;padding:14px 24px;font-size:15px;text-align:center;}
+  .hero-stats{gap:16px;margin-top:32px;}
+  .stat-num{font-size:22px;}
+  .stat-label{font-size:11px;}
+  section{padding:48px 16px;}
+  .section-title{font-size:24px;margin-bottom:8px;}
+  .section-sub{font-size:14px;margin-bottom:32px;}
+  .problem-grid{grid-template-columns:1fr;}
+  .problem-card{padding:20px;}
+  .problem-card h3{font-size:16px;}
+  .problem-card p{font-size:13px;}
+  .paths-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .path-card{padding:18px;}
+  .path-icon{font-size:28px;margin-bottom:8px;}
+  .path-card h3{font-size:15px;}
+  .path-card p{font-size:12px;}
+  .char-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .char-card{padding:14px;}
+  .char-avatar{width:48px;height:48px;font-size:22px;}
+  .char-card h3{font-size:13px;}
+  .daily-cards{grid-template-columns:1fr;}
+  .demo-section{padding:48px 12px;}
+  .demo-tabs{gap:4px;margin-bottom:16px;}
+  .demo-tab{padding:6px 10px;font-size:11px;}
+  .game-bar{padding:8px 12px;gap:8px;}
+  .game-stat .val{font-size:15px;}
+  .chat-container,.minigame-container{border-radius:14px;}
+  .chat-messages{min-height:300px;max-height:400px;padding:12px;}
+  .msg{font-size:13px;padding:10px 13px;}
+  .chat-option{padding:10px 13px;font-size:13px;}
+  .speed-question .char{font-size:36px;}
+  .speed-options,.tone-options-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .speed-opt,.tone-opt{padding:12px;font-size:13px;}
+  .tone-char{font-size:48px;}
+  .features-grid{grid-template-columns:1fr;}
+  .feature-card{padding:20px;}
+  .survey-grid{grid-template-columns:1fr;}
+  .survey-group{padding:18px;}
+  .cta h2{font-size:24px;}
+  .cta p{font-size:14px;}
+  .cta-form{flex-direction:column;align-items:center;}
+  .cta-input{min-width:auto;width:100%;max-width:320px;padding:14px 16px;font-size:15px;}
+  .cta-btn{width:100%;max-width:320px;padding:14px 24px;font-size:15px;}
+  .scene-selector{gap:4px;}
+  .scene-btn{padding:6px 10px;font-size:11px;}
+  .slot-machine{gap:6px;}
+  .slot-reel{width:68px;height:88px;font-size:30px;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:24px;}
+  .hero p{font-size:14px;}
+  .paths-grid,.char-grid{grid-template-columns:1fr;}
+  .speed-options,.tone-options-grid{grid-template-columns:1fr;}
+  .slot-reel{width:60px;height:76px;font-size:26px;}
+  .demo-tab{padding:5px 8px;font-size:10px;}
+  .chat-messages{min-height:260px;max-height:350px;}
+}
 </style>
 </head>
 <body>
