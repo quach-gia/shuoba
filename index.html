@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>说吧 ShuōBa — Học tiếng Trung bằng cách SỐNG</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--primary:#E63946;--primary-dark:#C1121F;--gold:#F4A261;--dark:#1D1D1D;--light:#FFF8F0;--gray:#6B7280;--green:#2D6A4F;--purple:#7C3AED;--pink:#EC4899;--blue:#3B82F6;--cyan:#06B6D4;}
+body{font-family:'Noto Sans','Noto Sans SC',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,248,240,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,0.05);display:flex;justify-content:space-between;align-items:center;padding:12px 40px;}
+.nav-logo{font-size:24px;font-weight:900;color:var(--primary);}
+.nav-logo span{color:var(--dark);font-weight:400;font-size:14px;margin-left:8px;}
+.nav-cta{background:var(--primary);color:white;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s;}
+.nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:160px 20px 80px;background:linear-gradient(135deg,var(--light) 0%,#FFE8D6 100%);position:relative;overflow:hidden;}
+.hero::before{content:'说吧';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:300px;font-weight:900;color:rgba(230,57,70,0.04);pointer-events:none;}
+.hero-content{max-width:800px;position:relative;z-index:1;}
+.hero-badge{display:inline-block;background:rgba(230,57,70,0.1);color:var(--primary);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:24px;}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:900;line-height:1.1;margin-bottom:20px;}
+.hero h1 .zh{color:var(--primary);}
+.hero p{font-size:18px;color:var(--gray);max-width:600px;margin:0 auto 32px;line-height:1.7;}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--primary);color:white;border:none;padding:16px 36px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.3s;text-decoration:none;font-family:inherit;}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,57,70,0.3);}
+.btn-secondary{background:transparent;color:var(--dark);border:2px solid var(--dark);padding:14px 36px;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none;}
+.btn-secondary:hover{background:var(--dark);color:white;}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:48px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-size:28px;font-weight:900;color:var(--primary);}
+.stat-label{font-size:13px;color:var(--gray);margin-top:4px;}
+
+/* SECTIONS */
+section{padding:80px 20px;}
+.container{max-width:1100px;margin:0 auto;}
+.section-title{text-align:center;font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:12px;}
+.section-sub{text-align:center;color:var(--gray);font-size:16px;margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto;}
+
+/* PROBLEM */
+.problem{background:var(--dark);color:white;}
+.problem .section-title{color:white;}
+.problem .section-sub{color:rgba(255,255,255,0.6);}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.problem-card{padding:32px;border-radius:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);}
+.problem-card.old{opacity:0.6;}
+.problem-card.new{border-color:var(--primary);background:rgba(230,57,70,0.1);}
+.problem-card h3{font-size:18px;margin-bottom:12px;}
+.problem-card.old h3::before{content:'❌ ';}
+.problem-card.new h3::before{content:'✅ ';}
+.problem-card p{color:rgba(255,255,255,0.7);line-height:1.6;font-size:14px;}
+.problem-card.new p{color:rgba(255,255,255,0.9);}
+
+/* PATHS */
+.paths-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+.path-card{background:white;border-radius:20px;padding:28px;border:2px solid transparent;transition:all 0.3s;box-shadow:0 2px 12px rgba(0,0,0,0.04);cursor:pointer;position:relative;overflow:hidden;}
+.path-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08);}
+.path-card.featured{border-color:var(--primary);}
+.path-card.featured::after{content:'HOT';position:absolute;top:16px;right:16px;background:var(--primary);color:white;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;}
+.path-card.new-tag::after{content:'MỚI';position:absolute;top:16px;right:16px;background:var(--purple);color:white;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;}
+.path-icon{font-size:36px;margin-bottom:12px;}
+.path-card h3{font-size:18px;font-weight:700;margin-bottom:2px;}
+.path-card .zh-name{font-size:13px;color:var(--primary);margin-bottom:10px;}
+.path-card p{color:var(--gray);font-size:13px;line-height:1.5;margin-bottom:12px;}
+.path-tags{display:flex;gap:4px;flex-wrap:wrap;}
+.path-tag{background:rgba(230,57,70,0.08);color:var(--primary);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500;}
+
+/* CHARACTERS */
+.characters{background:#FFF0E6;}
+.char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+.char-card{background:white;border-radius:20px;padding:20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.3s;cursor:pointer;}
+.char-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.1);}
+.char-avatar{width:64px;height:64px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:28px;background:rgba(230,57,70,0.06);}
+.char-card h3{font-size:15px;font-weight:700;}
+.char-card .char-zh{font-size:12px;color:var(--primary);margin-bottom:4px;}
+.char-card p{font-size:11px;color:var(--gray);line-height:1.4;}
+.char-style{display:inline-block;margin-top:8px;background:rgba(230,57,70,0.08);color:var(--primary);padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;}
+.char-cat{font-size:11px;color:var(--purple);font-weight:600;margin-bottom:6px;}
+
+/* DAILY */
+.daily-section{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:white;}
+.daily-section .section-title{color:white;}
+.daily-section .section-sub{color:rgba(255,255,255,0.5);}
+.daily-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.daily-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;transition:all 0.3s;}
+.daily-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);}
+.daily-icon{font-size:32px;margin-bottom:12px;}
+.daily-card h4{color:var(--gold);font-size:16px;margin-bottom:8px;}
+.daily-card p{color:rgba(255,255,255,0.7);font-size:13px;line-height:1.6;}
+.daily-card .daily-zh{color:rgba(255,255,255,0.4);font-size:12px;margin-top:8px;font-style:italic;}
+
+/* DEMO */
+.demo-section{background:var(--dark);color:white;padding:80px 20px;}
+.demo-section .section-title{color:white;}
+.demo-section .section-sub{color:rgba(255,255,255,0.6);}
+
+/* GAME BAR */
+.game-bar{max-width:560px;margin:0 auto 20px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);padding:10px 16px;border-radius:12px;}
+.xp-section{flex:1;}
+.xp-label{font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;display:flex;justify-content:space-between;}
+.xp-bar{height:8px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--primary));border-radius:4px;transition:width 0.8s ease;width:0%;}
+.game-stat{text-align:center;padding:0 12px;border-left:1px solid rgba(255,255,255,0.1);}
+.game-stat .val{font-size:18px;font-weight:900;color:var(--gold);}
+.game-stat .lbl{font-size:10px;color:rgba(255,255,255,0.4);}
+.streak-fire{animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
+.combo-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:48px;font-weight:900;color:var(--gold);text-shadow:0 0 40px rgba(244,162,97,0.5);z-index:200;pointer-events:none;animation:comboAnim 1.2s ease forwards;display:none;}
+@keyframes comboAnim{0%{opacity:0;transform:translate(-50%,-50%) scale(0.5);}30%{opacity:1;transform:translate(-50%,-50%) scale(1.2);}100%{opacity:0;transform:translate(-50%,-80%) scale(1);}}
+.shake{animation:shake 0.4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-8px);}40%{transform:translateX(8px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+.confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:199;overflow:hidden;}
+.confetti{position:absolute;width:8px;height:8px;border-radius:2px;top:-10px;animation:confettiFall 2s ease forwards;}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
+.float-emoji{position:fixed;font-size:28px;pointer-events:none;z-index:199;animation:floatUp 1.5s ease forwards;}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-120px) scale(1.5);}}
+
+/* CHAT */
+.chat-container{max-width:560px;margin:0 auto;background:#111;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.chat-header{padding:14px 20px;display:flex;align-items:center;gap:12px;background:var(--primary);}
+.chat-header-avatar{width:48px;height:48px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;}
+.mood-indicator{position:absolute;bottom:-2px;right:-2px;font-size:16px;animation:moodPop 0.4s ease;}
+@keyframes moodPop{0%{transform:scale(0);}100%{transform:scale(1);}}
+.chat-header-info h4{color:white;font-size:15px;}
+.chat-header-info p{color:rgba(255,255,255,0.7);font-size:12px;}
+.chat-messages{padding:16px;min-height:400px;max-height:500px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+.msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeIn 0.4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.msg-ai{background:#2A2A2A;color:white;align-self:flex-start;border-bottom-left-radius:4px;}
+.msg-user{background:var(--primary);color:white;align-self:flex-end;border-bottom-right-radius:4px;}
+.msg-system{background:rgba(244,162,97,0.15);color:var(--gold);align-self:center;text-align:center;font-size:13px;border-radius:8px;max-width:90%;}
+.msg-grammar{background:rgba(45,106,79,0.15);color:#6EE7B7;align-self:center;font-size:13px;border-radius:10px;max-width:92%;padding:14px 18px;line-height:1.6;}
+.msg-funny{background:rgba(236,72,153,0.12);color:#F9A8D4;align-self:center;font-size:13px;border-radius:10px;max-width:92%;padding:14px 18px;line-height:1.6;white-space:pre-line;}
+.msg-culture{background:rgba(6,182,212,0.12);color:#67E8F9;align-self:center;font-size:13px;border-radius:10px;max-width:92%;padding:14px 18px;line-height:1.6;}
+.msg-hanzi{background:rgba(124,58,237,0.15);color:#C4B5FD;align-self:center;text-align:center;font-size:13px;border-radius:10px;max-width:92%;padding:14px 18px;}
+.msg .pinyin{color:var(--gold);font-size:12px;display:block;margin-top:4px;}
+.msg .vn{color:rgba(255,255,255,0.5);font-size:12px;display:block;margin-top:2px;}
+.chat-input-area{padding:14px;border-top:1px solid rgba(255,255,255,0.1);}
+.chat-options{display:flex;flex-direction:column;gap:6px;width:100%;}
+.chat-option{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;padding:11px 15px;border-radius:12px;font-size:14px;cursor:pointer;transition:all 0.2s;text-align:left;font-family:inherit;}
+.chat-option:hover{background:var(--primary);border-color:var(--primary);}
+.chat-option .opt-zh{font-weight:600;}
+.chat-option .opt-vn{color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;}
+
+/* MINI GAME: DRAG, SPEED, SLOT */
+.minigame-container{max-width:560px;margin:0 auto;background:#111;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.minigame-header{padding:16px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);}
+.minigame-header h4{color:white;font-size:16px;}
+.minigame-header p{color:rgba(255,255,255,0.5);font-size:13px;}
+.minigame-body{padding:20px;}
+
+/* Speed Quiz */
+.speed-timer{height:6px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:20px;overflow:hidden;}
+.speed-timer-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--gold),var(--primary));border-radius:3px;transition:width 0.1s linear;}
+.speed-question{text-align:center;margin-bottom:20px;}
+.speed-question .char{font-size:48px;font-weight:900;color:white;}
+.speed-question .hint{color:var(--gold);font-size:14px;margin-top:6px;}
+.speed-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.speed-opt{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);color:white;padding:16px;border-radius:12px;cursor:pointer;text-align:center;font-family:inherit;font-size:15px;transition:all 0.2s;}
+.speed-opt:hover{border-color:var(--gold);}
+.speed-opt.correct{border-color:var(--green);background:rgba(45,106,79,0.3);animation:correctPulse 0.3s ease;}
+.speed-opt.wrong{border-color:var(--primary);background:rgba(230,57,70,0.2);}
+@keyframes correctPulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+.speed-score{text-align:center;padding:20px;}
+.speed-score .big{font-size:48px;font-weight:900;color:var(--gold);}
+
+/* Word Slot */
+.slot-machine{display:flex;justify-content:center;gap:8px;margin:20px 0;}
+.slot-reel{width:80px;height:100px;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;color:white;transition:all 0.3s;cursor:pointer;}
+.slot-reel.spinning{animation:slotSpin 0.3s ease infinite;border-color:var(--gold);}
+@keyframes slotSpin{0%{transform:translateY(0);}50%{transform:translateY(-4px);}100%{transform:translateY(0);}}
+.slot-reel.locked{border-color:var(--green);background:rgba(45,106,79,0.15);}
+.slot-meaning{text-align:center;color:rgba(255,255,255,0.5);font-size:14px;margin:12px 0;}
+.slot-btn{display:block;margin:0 auto;background:var(--gold);color:var(--dark);border:none;padding:12px 32px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.slot-btn:hover{transform:translateY(-2px);}
+
+/* RESULT */
+.result-panel{display:none;text-align:center;padding:32px;}
+.result-panel.show{display:block;}
+.result-score-ring{width:120px;height:120px;border-radius:50%;border:6px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;}
+.result-score-num{font-size:36px;font-weight:900;color:var(--gold);}
+.result-label{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:12px;}
+.result-breakdown{display:flex;justify-content:center;gap:24px;margin:20px 0;}
+.result-stat{text-align:center;}
+.result-stat .val{font-size:20px;font-weight:700;color:white;}
+.result-stat .lbl{font-size:11px;color:rgba(255,255,255,0.5);}
+.result-msg{color:rgba(255,255,255,0.8);font-size:15px;margin:16px 0 24px;line-height:1.6;}
+.result-badges{display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.badge{background:rgba(244,162,97,0.15);color:var(--gold);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.feature-card{background:white;padding:28px;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
+.feature-icon{font-size:32px;margin-bottom:12px;}
+.feature-card h3{font-size:18px;font-weight:700;margin-bottom:8px;}
+.feature-card p{color:var(--gray);font-size:14px;line-height:1.6;}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);text-align:center;color:white;}
+.cta h2{font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:16px;}
+.cta p{font-size:16px;opacity:0.9;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;}
+.cta-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto;}
+.cta-input{flex:1;min-width:240px;padding:16px 20px;border:none;border-radius:12px;font-size:16px;font-family:inherit;}
+.cta-btn{background:var(--dark);color:white;border:none;padding:16px 32px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.3s;font-family:inherit;}
+.cta-btn:hover{background:#000;transform:translateY(-2px);}
+.cta-note{font-size:13px;opacity:0.7;margin-top:16px;}
+
+footer{text-align:center;padding:32px;color:var(--gray);font-size:13px;background:var(--light);}
+
+/* DEMO TABS */
+.demo-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:24px;flex-wrap:wrap;}
+.demo-tab{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);padding:8px 16px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.3s;font-family:inherit;}
+.demo-tab.active{background:var(--primary);border-color:var(--primary);color:white;}
+.demo-tab:hover{border-color:var(--primary);color:white;}
+.demo-panel{display:none;}
+.demo-panel.active{display:block;}
+
+/* SURVEY */
+.survey-section{background:var(--light);}
+.survey-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;}
+.survey-group{background:white;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
+.survey-group-title{font-size:16px;font-weight:700;margin-bottom:16px;color:var(--dark);}
+.survey-options{display:flex;flex-direction:column;gap:8px;}
+.survey-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;cursor:pointer;transition:all 0.2s;border:2px solid transparent;}
+.survey-opt:hover{background:rgba(230,57,70,0.04);}
+.survey-opt input{display:none;}
+.survey-check{width:22px;height:22px;border-radius:6px;border:2px solid #D1D5DB;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;font-size:12px;}
+.survey-radio .survey-check{border-radius:50%;}
+.survey-opt input:checked ~ .survey-check{background:var(--primary);border-color:var(--primary);color:white;}
+.survey-opt input:checked ~ .survey-check::after{content:'✓';color:white;font-weight:700;}
+.survey-opt input:checked ~ .survey-label{color:var(--primary);font-weight:600;}
+.survey-label{font-size:14px;color:var(--dark);line-height:1.4;}
+.survey-submit-area{text-align:center;}
+
+/* SCENE DEMO */
+.scene-selector{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;justify-content:center;}
+.scene-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-family:inherit;transition:all 0.2s;}
+.scene-btn.active{background:var(--primary);border-color:var(--primary);color:white;}
+.scene-btn:hover{border-color:var(--primary);color:white;}
+
+/* TONE DEMO */
+.tone-display{text-align:center;margin-bottom:20px;}
+.tone-char{font-size:64px;font-weight:900;color:white;}
+.tone-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.tone-opt{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);color:white;padding:16px;border-radius:12px;cursor:pointer;text-align:center;font-family:inherit;transition:all 0.2s;}
+.tone-opt:hover{border-color:var(--gold);}
+.tone-opt.correct{border-color:var(--green);background:rgba(45,106,79,0.3);}
+.tone-opt.wrong{border-color:var(--primary);background:rgba(230,57,70,0.2);}
+.tone-opt .tone-mark{font-size:24px;font-weight:700;}
+.tone-opt .tone-name{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;}
+
+/* DRAMA DEMO */
+.drama-scene{background:rgba(255,255,255,0.04);border-radius:12px;padding:16px;margin-bottom:16px;}
+.drama-context{font-size:12px;color:var(--cyan);margin-bottom:8px;font-weight:600;}
+.drama-line{font-size:20px;font-weight:700;color:white;margin-bottom:4px;}
+.drama-pinyin{font-size:13px;color:var(--gold);}
+.drama-question{color:white;font-size:14px;font-weight:600;margin:16px 0 10px;}
+
+@media(max-width:768px){nav{padding:12px 16px;}.nav-logo span{display:none;}.problem-grid{grid-template-columns:1fr;}.hero-stats{gap:20px;}.speed-options,.tone-options-grid{grid-template-columns:1fr;}.paths-grid{grid-template-columns:1fr 1fr;}.char-grid{grid-template-columns:1fr 1fr;}.survey-grid{grid-template-columns:1fr;}}
+@media(max-width:480px){.paths-grid,.char-grid{grid-template-columns:1fr;}.slot-reel{width:64px;height:80px;font-size:28px;}}
+</style>
+</head>
+<body>
+
+<div class="combo-popup" id="comboPopup"></div>
+<div class="confetti-container" id="confettiBox"></div>
+
+<div style="background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:white;text-align:center;padding:10px 20px;font-size:13px;font-weight:600;position:fixed;top:0;width:100%;z-index:101;letter-spacing:0.5px;">🚀 COMING SOON — Đây là bản Demo trải nghiệm. Đăng ký bên dưới để nhận thông báo khi ra mắt chính thức!</div>
+<nav style="top:38px;">
+  <div class="nav-logo">说吧<span>ShuōBa</span></div>
+  <button class="nav-cta" onclick="scrollTo('#demo')">Chơi thử Demo</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Phương pháp học tiếng Trung hoàn toàn mới cho người Việt</div>
+    <h1>Đừng <span class="zh">学</span> tiếng Trung.<br>Hãy <span class="zh">活</span> tiếng Trung.</h1>
+    <p>说吧 ShuōBa đưa bạn vào một thế giới Trung Quốc do AI tạo ra — nơi bạn mặc cả, yêu đương, cãi nhau, xử lý sự cố... tất cả bằng tiếng Trung. Không sách giáo khoa. Chỉ có cuộc sống.</p>
+    <div class="hero-buttons">
+      <a href="#demo" class="btn-primary">🎮 Chơi thử Demo ngay</a>
+      <a href="#paths" class="btn-secondary">Chọn con đường của bạn</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Con đường học</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Nhân vật AI sống</div></div>
+      <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Tình huống thật</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <h2 class="section-title">Vì sao học mãi không nói được?</h2>
+    <p class="section-sub">Vấn đề không phải bạn. Vấn đề là cách học.</p>
+    <div class="problem-grid">
+      <div class="problem-card old"><h3>Cách cũ: Học từ vựng</h3><p>Nhớ 5000 từ nhưng gặp người Trung thì đứng hình. Bạn chưa bao giờ DÙNG chúng trong ngữ cảnh thật.</p></div>
+      <div class="problem-card new"><h3>ShuōBa: Nói luôn từ ngày đầu</h3><p>Bạn chat với Lão Vương mặc cả, với Tiểu Mỹ hẹn hò, với bác sĩ Lâm khám bệnh — BUỘC phải dùng tiếng Trung, vì họ không chờ.</p></div>
+      <div class="problem-card old"><h3>Cách cũ: Ngữ pháp trừu tượng</h3><p>"把 là bổ ngữ kết quả..." — Nghe xong vẫn không biết dùng khi nào.</p></div>
+      <div class="problem-card new"><h3>ShuōBa: Sai thì cười, đúng thì hưởng</h3><p>Nói sai? Nhân vật AI phản ứng — giận, cười, sốc. Bạn nhớ vì cảm xúc, không phải vì bài tập.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PATHS -->
+<section id="paths">
+  <div class="container">
+    <h2 class="section-title">Chọn cuộc đời bạn muốn sống bằng tiếng Trung</h2>
+    <p class="section-sub">选择你的路 — Không phải chọn cấp độ HSK. Chọn cuộc sống bạn muốn.</p>
+    <div class="paths-grid">
+      <div class="path-card featured"><div class="path-icon">🏪</div><h3>Thương Nhân</h3><div class="zh-name">商人之路</div><p>Mua hàng TQ, đàm phán giá, xử lý logistics.</p><div class="path-tags"><span class="path-tag">1688</span><span class="path-tag">Taobao</span><span class="path-tag">Đàm phán</span></div></div>
+      <div class="path-card new-tag"><div class="path-icon">💑</div><h3>Tình Yêu</h3><div class="zh-name">恋爱之路</div><p>Hẹn hò, tỏ tình, cãi nhau, làm lành bằng tiếng Trung.</p><div class="path-tags"><span class="path-tag">Hẹn hò</span><span class="path-tag">WeChat</span><span class="path-tag">Gia đình</span></div></div>
+      <div class="path-card new-tag"><div class="path-icon">📜</div><h3>Cổ Phong</h3><div class="zh-name">古风之路</div><p>Kiếm hiệp, tu tiên, thư pháp. Tiếng Trung qua văn hoá cổ đại.</p><div class="path-tags"><span class="path-tag">Tu tiên</span><span class="path-tag">Cổ trang</span><span class="path-tag">Thành ngữ</span></div></div>
+      <div class="path-card new-tag"><div class="path-icon">📱</div><h3>KOC / Livestream</h3><div class="zh-name">直播之路</div><p>Livestream bán hàng, làm KOC Douyin xuyên biên giới.</p><div class="path-tags"><span class="path-tag">Douyin</span><span class="path-tag">Livestream</span><span class="path-tag">Viral</span></div></div>
+      <div class="path-card"><div class="path-icon">🎓</div><h3>Du Học Sinh</h3><div class="zh-name">留学之路</div><p>HSK, ký túc xá, giao tiếp đại học.</p><div class="path-tags"><span class="path-tag">HSK</span><span class="path-tag">Đại học</span></div></div>
+      <div class="path-card"><div class="path-icon">💼</div><h3>Dân Công Sở</h3><div class="zh-name">职场之路</div><p>Họp, email, thuyết trình với đối tác TQ.</p><div class="path-tags"><span class="path-tag">Email</span><span class="path-tag">Kính ngữ</span></div></div>
+      <div class="path-card"><div class="path-icon">❤️</div><h3>Đam Mê</h3><div class="zh-name">热爱之路</div><p>C-Drama, C-pop, variety show, Douyin.</p><div class="path-tags"><span class="path-tag">C-Drama</span><span class="path-tag">C-pop</span></div></div>
+      <div class="path-card"><div class="path-icon">🧳</div><h3>Du Lịch</h3><div class="zh-name">旅行之路</div><p>Gọi món, hỏi đường, du lịch tự túc.</p><div class="path-tags"><span class="path-tag">Ẩm thực</span><span class="path-tag">Khách sạn</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="characters">
+  <div class="container">
+    <h2 class="section-title">15 nhân vật AI, 15 tính cách</h2>
+    <p class="section-sub">认识你的老师们 — Họ biết giận, biết đùa, biết yêu. Không phải robot.</p>
+    <div class="char-grid">
+      <!-- Thương mại -->
+      <div class="char-card"><div class="char-avatar">👴</div><h3>Lão Vương</h3><div class="char-zh">老王 · Chủ xưởng</div><div class="char-cat">THƯƠNG MẠI</div><p>Nói nhanh, mặc cả bậc thầy. Muốn giá rẻ phải qua ông ấy.</p><div class="char-style">Đàm phán · Khó tính</div></div>
+      <div class="char-card"><div class="char-avatar">👩‍💼</div><h3>Chị Hồng</h3><div class="char-zh">红姐 · Sale manager</div><div class="char-cat">THƯƠNG MẠI</div><p>Ngọt ngào khi bán, lạnh lùng khi trả hàng. Dạy bạn tiếng Trung "hai mặt".</p><div class="char-style">Bán hàng · Thương lượng</div></div>
+      <!-- Tình cảm -->
+      <div class="char-card"><div class="char-avatar">👩</div><h3>Tiểu Mỹ</h3><div class="char-zh">小美 · Crush của bạn</div><div class="char-cat">TÌNH CẢM</div><p>Gen Z, hay giận dỗi, thích được chiều. Nói sai 1 câu = "bạn không yêu em rồi!"</p><div class="char-style">Hẹn hò · Drama</div></div>
+      <div class="char-card"><div class="char-avatar">👵</div><h3>Bà Trương</h3><div class="char-zh">张阿姨 · Mẹ người yêu</div><div class="char-cat">TÌNH CẢM</div><p>Hỏi lương, hỏi nhà, hỏi bao giờ cưới. Boss cuối của con đường Tình Yêu.</p><div class="char-style">Gia đình · Áp lực</div></div>
+      <!-- Hài / Lầy -->
+      <div class="char-card"><div class="char-avatar">🤪</div><h3>A Kỳ</h3><div class="char-zh">阿奇 · Streamer Douyin</div><div class="char-cat">HÀI / LẦY</div><p>Nói như rap, toàn dùng meme. Chat với A Kỳ = lướt Douyin bằng tiếng Trung.</p><div class="char-style">Meme · Gen Z</div></div>
+      <div class="char-card"><div class="char-avatar">💅</div><h3>Dì Phượng</h3><div class="char-zh">凤姨 · Bà hàng xóm</div><div class="char-cat">HÀI / LẦY</div><p>Biết chuyện cả xóm, hay kể xấu, dramatic level max. Học tiếng Trung qua gossip.</p><div class="char-style">Gossip · Drama</div></div>
+      <div class="char-card"><div class="char-avatar">🧑‍🍳</div><h3>Đầu bếp Mã</h3><div class="char-zh">马师傅 · Bếp trưởng lẩu</div><div class="char-cat">HÀI / LẦY</div><p>La hét trong bếp, chửi khi gọi sai món, khen nức nở khi bạn nói đúng. Gordon Ramsay bản TQ.</p><div class="char-style">Ẩm thực · Hài</div></div>
+      <!-- Chuyên ngành -->
+      <div class="char-card"><div class="char-avatar">👨‍⚕️</div><h3>Bác sĩ Lâm</h3><div class="char-zh">林医生 · BS cấp cứu</div><div class="char-cat">CHUYÊN NGÀNH</div><p>Nói chậm, rõ ràng, kiên nhẫn. Dạy bạn miêu tả triệu chứng, mua thuốc bằng tiếng Trung.</p><div class="char-style">Y tế · Khẩn cấp</div></div>
+      <div class="char-card"><div class="char-avatar">👮</div><h3>Sĩ quan Triệu</h3><div class="char-zh">赵警官 · Cảnh sát</div><div class="char-cat">CHUYÊN NGÀNH</div><p>Nghiêm túc, hỏi cụ thể. Bạn mất đồ ở TQ? Phải trình báo bằng tiếng Trung.</p><div class="char-style">Pháp luật · Khẩn cấp</div></div>
+      <!-- Cổ phong -->
+      <div class="char-card"><div class="char-avatar">👲</div><h3>Ông Lý</h3><div class="char-zh">李大爷 · Bác bán trà</div><div class="char-cat">VĂN HOÁ</div><p>Mỗi chén trà một câu chuyện lịch sử. Dạy thành ngữ, ca dao qua trà đạo.</p><div class="char-style">Trà đạo · Thành ngữ</div></div>
+      <!-- Đời thường -->
+      <div class="char-card"><div class="char-avatar">🚗</div><h3>Anh tài xế Lưu</h3><div class="char-zh">刘师傅 · Tài xế Didi</div><div class="char-cat">ĐỜI THƯỜNG</div><p>Nói chuyện phiếm cả chặng đường, kể chuyện thành phố, recommend quán ăn. Học tiếng Trung trên taxi.</p><div class="char-style">Small talk · Giao thông</div></div>
+      <div class="char-card"><div class="char-avatar">🏠</div><h3>Chị Lan</h3><div class="char-zh">兰姐 · Chủ nhà trọ</div><div class="char-cat">ĐỜI THƯỜNG</div><p>Ký hợp đồng thuê, sửa ống nước, trả tiền điện. Boss cuối của "thuê nhà ở TQ".</p><div class="char-style">Thuê nhà · Hợp đồng</div></div>
+      <div class="char-card"><div class="char-avatar">👨‍🏫</div><h3>Thầy Trần</h3><div class="char-zh">陈老师 · Giảng viên</div><div class="char-cat">HỌC THUẬT</div><p>Sửa lỗi không tha, đòi chính xác tuyệt đối. HSK phải qua tay thầy.</p><div class="char-style">Ngữ pháp · HSK</div></div>
+      <div class="char-card"><div class="char-avatar">🧑</div><h3>A Phúc</h3><div class="char-zh">阿福 · Shipper</div><div class="char-cat">ĐỜI THƯỜNG</div><p>Nói dialect, hay đùa. Nghe hiểu A Phúc = nghe hiểu 90% người Trung.</p><div class="char-style">Accent · Đời thường</div></div>
+      <div class="char-card"><div class="char-avatar">👩‍💻</div><h3>Tiểu Lâm</h3><div class="char-zh">小林 · KOC Douyin</div><div class="char-cat">LIVESTREAM</div><p>"3, 2, 1 — 上链接!" Dạy bạn livestream bán hàng bằng tiếng Trung như pro.</p><div class="char-style">Livestream · Viral</div></div>
+      <div class="char-card"><div class="char-avatar">💇‍♀️</div><h3>Cô Tuyết</h3><div class="char-zh">雪姐 · Chủ salon tóc</div><div class="char-cat">ĐỜI THƯỜNG</div><p>Hỏi cắt kiểu gì, nhuộm màu nào, than phiền sếp. Nơi nghe gossip đỉnh nhất TQ.</p><div class="char-style">Dịch vụ · Gossip</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY -->
+<section class="daily-section">
+  <div class="container">
+    <h2 class="section-title">Mỗi ngày 1 điều thú vị</h2>
+    <p class="section-sub">每日一趣 — Văn hoá, lịch sử, ngôn ngữ — mỗi ngày 1 phút, mỗi ngày 1 bất ngờ</p>
+    <div class="daily-cards">
+      <div class="daily-card">
+        <div class="daily-icon">🏛️</div>
+        <h4>Lịch sử: Tại sao người Trung uống nước nóng?</h4>
+        <p>Từ những năm 1930, chính phủ TQ phát động phong trào "uống nước đun sôi" để chống dịch bệnh. Thói quen này ăn sâu đến mức bạn gái TQ giận sẽ bảo "多喝热水" (uống nhiều nước nóng đi) — câu này = "anh không quan tâm em!" 😄</p>
+        <div class="daily-zh">今日词汇: 多喝热水 (duō hē rè shuǐ)</div>
+      </div>
+      <div class="daily-card">
+        <div class="daily-icon">🔤</div>
+        <h4>Ngôn ngữ: Số 520 nghĩa là "Anh yêu em"</h4>
+        <p>520 phát âm gần giống 我爱你 (wǒ ài nǐ). Nên ngày 20/5 là "Ngày tình nhân online" ở TQ. Còn 1314 = 一生一世 (cả đời). Chuyển 5.20 tệ = tỏ tình. Chuyển 13.14 tệ = cầu hôn!</p>
+        <div class="daily-zh">今日词汇: 五二零 = 我爱你</div>
+      </div>
+      <div class="daily-card">
+        <div class="daily-icon">🧧</div>
+        <h4>Văn hoá: Đừng bao giờ tặng đồng hồ cho người TQ</h4>
+        <p>"Tặng đồng hồ" = 送钟 (sòng zhōng), đồng âm với 送终 (tiễn tang). Bạn tặng đồng hồ = nguyền rủa người ta chết! Tương tự: đừng tặng quạt (扇 = 散 = tan rã), lê (梨 = 离 = chia ly).</p>
+        <div class="daily-zh">今日词汇: 送钟 ≠ 送终 (cẩn thận!)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px;"><span style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 24px;border-radius:30px;font-size:14px;font-weight:800;letter-spacing:1px;animation:pulse 2s infinite;">🎮 BẢN DEMO — TRẢI NGHIỆM NGAY, KHÔNG CẦN ĐĂNG KÝ</span></div>
+    <h2 class="section-title">Thử ngay cảm giác học tiếng Trung kiểu mới</h2>
+    <p class="section-sub">试一试吧 — Chọn 1 tab bên dưới và bắt đầu. Đây là bản demo — phiên bản đầy đủ sẽ hay hơn gấp 10 lần!</p>
+
+    <!-- GAME BAR -->
+    <div class="game-bar" id="gameBar">
+      <div class="xp-section">
+        <div class="xp-label"><span>XP</span><span id="xpText">0 / 100</span></div>
+        <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+      </div>
+      <div class="game-stat"><div class="val" id="comboVal">0</div><div class="lbl">Combo</div></div>
+      <div class="game-stat"><div class="val"><span id="streakVal" class="streak-fire">🔥</span> <span id="streakNum">0</span></div><div class="lbl">Streak</div></div>
+    </div>
+
+    <div class="demo-tabs">
+      <button class="demo-tab active" onclick="switchDemo('story')">📖 Câu chuyện</button>
+      <button class="demo-tab" onclick="switchDemo('scenes')">🎭 Tình huống</button>
+      <button class="demo-tab" onclick="switchDemo('tones')">🎵 Phát âm</button>
+      <button class="demo-tab" onclick="switchDemo('drama')">🎬 Học qua phim</button>
+      <button class="demo-tab" onclick="switchDemo('funny')">😂 Sai = Vui</button>
+      <button class="demo-tab" onclick="switchDemo('speed')">⚡ Speed Quiz</button>
+      <button class="demo-tab" onclick="switchDemo('slot')">🎰 Từ vựng Slot</button>
+    </div>
+
+    <!-- STORY MODE -->
+    <div class="demo-panel active" id="demoStory">
+      <div class="chat-container" id="storyChat">
+        <div class="chat-header" id="storyHeader">
+          <div class="chat-header-avatar" id="storyAvatar">👴<span class="mood-indicator" id="storyMood">😏</span></div>
+          <div class="chat-header-info"><h4 id="storyName">老王 · Lão Vương</h4><p id="storyDesc">Chợ Quảng Châu — Chapter 1/4</p></div>
+        </div>
+        <div class="chat-messages" id="storyMessages"></div>
+        <div class="chat-input-area" id="storyInput"></div>
+        <div class="result-panel" id="storyResult">
+          <div class="result-score-ring"><div class="result-score-num" id="storyScore"></div></div>
+          <div class="result-label">Điểm hành trình · 旅程得分</div>
+          <div class="result-breakdown" id="storyBreakdown"></div>
+          <div class="result-msg" id="storyMsg"></div>
+          <div class="result-badges" id="storyBadges"></div>
+          <button class="btn-primary" onclick="initStory()">Chơi lại từ đầu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUNNY MODE -->
+    <div class="demo-panel" id="demoFunny">
+      <div class="chat-container">
+        <div class="chat-header" style="background:var(--pink)">
+          <div class="chat-header-avatar">😂<span class="mood-indicator">🤭</span></div>
+          <div class="chat-header-info"><h4>Sai = Vui · 错了也开心</h4><p>Nói sai không sao — miễn là nhớ lâu!</p></div>
+        </div>
+        <div class="chat-messages" id="funnyMessages"></div>
+        <div class="chat-input-area" id="funnyInput"></div>
+      </div>
+    </div>
+
+    <!-- SPEED QUIZ -->
+    <div class="demo-panel" id="demoSpeed">
+      <div class="minigame-container">
+        <div class="minigame-header"><h4>⚡ Speed Quiz · 极速挑战</h4><p>10 giây mỗi câu — trả lời nhanh, điểm cao hơn!</p></div>
+        <div class="minigame-body" id="speedBody"></div>
+      </div>
+    </div>
+
+    <!-- SLOT MACHINE -->
+    <div class="demo-panel" id="demoSlot">
+      <div class="minigame-container">
+        <div class="minigame-header"><h4>🎰 Từ vựng Slot · 词汇老虎机</h4><p>Quay slot, ghép chữ thành từ có nghĩa!</p></div>
+        <div class="minigame-body" id="slotBody"></div>
+      </div>
+    </div>
+
+    <!-- SCENES: TÌNH HUỐNG ĐỜI THẬT -->
+    <div class="demo-panel" id="demoScenes">
+      <div class="scene-selector">
+        <button class="scene-btn active" onclick="loadScene(0)">💑 Hẹn hò</button>
+        <button class="scene-btn" onclick="loadScene(1)">🚗 Gọi taxi</button>
+        <button class="scene-btn" onclick="loadScene(2)">🏥 Khám bệnh</button>
+        <button class="scene-btn" onclick="loadScene(3)">📱 Livestream</button>
+      </div>
+      <div class="chat-container">
+        <div class="chat-header" id="sceneHeader" style="background:var(--pink)">
+          <div class="chat-header-avatar" id="sceneAvatar">👩<span class="mood-indicator" id="sceneMood">😊</span></div>
+          <div class="chat-header-info"><h4 id="sceneName">小美 · Tiểu Mỹ</h4><p id="sceneDesc">Hẹn hò lần đầu</p></div>
+        </div>
+        <div class="chat-messages" id="sceneMessages"></div>
+        <div class="chat-input-area" id="sceneInput"></div>
+      </div>
+    </div>
+
+    <!-- TONES: PHÁT ÂM -->
+    <div class="demo-panel" id="demoTones">
+      <div class="minigame-container">
+        <div class="minigame-header"><h4>🎵 Thanh điệu · 声调挑战</h4><p>Cùng 1 chữ, khác thanh = khác nghĩa hoàn toàn!</p></div>
+        <div class="minigame-body" id="tonesBody"></div>
+      </div>
+    </div>
+
+    <!-- DRAMA: HỌC QUA PHIM -->
+    <div class="demo-panel" id="demoDrama">
+      <div class="minigame-container">
+        <div class="minigame-header"><h4>🎬 Học qua phim · 看剧学中文</h4><p>Trích đoạn phim TQ nổi tiếng — đoán nghĩa, học slang</p></div>
+        <div class="minigame-body" id="dramaBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Không giống bất kỳ app nào</h2>
+    <p class="section-sub">与众不同 — ShuōBa tạo ra trải nghiệm chưa từng có.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🎮</div><h3>RPG tiếng Trung</h3><p>Storyline xuyên suốt: đến TQ → mặc cả → ăn trưa → gặp sự cố → xử lý. Mỗi chapter = 1 level.</p></div>
+      <div class="feature-card"><div class="feature-icon">😤</div><h3>Nhân vật sống</h3><p>15 nhân vật AI thay đổi biểu cảm theo câu trả lời. Giận, vui, sốc, buồn — như nói chuyện người thật.</p></div>
+      <div class="feature-card"><div class="feature-icon">📖</div><h3>Mỗi ngày 1 bất ngờ</h3><p>Câu chuyện văn hoá, lịch sử, ngôn ngữ TQ thú vị — chỉ 1 phút, nhớ cả tuần.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔥</div><h3>Combo & Streak</h3><p>Trả lời đúng liên tiếp = combo tăng XP. Duy trì streak hàng ngày = badge đặc biệt.</p></div>
+      <div class="feature-card"><div class="feature-icon">🎰</div><h3>Mini game đa dạng</h3><p>Speed quiz, slot từ vựng, ghép câu — không bao giờ nhàm chán.</p></div>
+      <div class="feature-card"><div class="feature-icon">😂</div><h3>Sai = nhớ cả đời</h3><p>Nói "ngủ với bạn" thay vì "đi ngủ"? Nhân vật phản ứng = bạn không bao giờ sai lần 2.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SURVEY -->
+<section class="survey-section" id="survey">
+  <div class="container">
+    <h2 class="section-title">Bạn quan tâm điều gì nhất khi học tiếng Trung?</h2>
+    <p class="section-sub">你最关心什么？ — Giúp ShuōBa hiểu bạn hơn để tạo giáo trình phù hợp nhất</p>
+
+    <div class="survey-grid">
+      <div class="survey-group">
+        <h3 class="survey-group-title">🎯 Mục đích học</h3>
+        <div class="survey-options" id="surveyPurpose">
+          <label class="survey-opt"><input type="checkbox" value="buon-hang"><span class="survey-check"></span><span class="survey-label">Mua hàng / buôn bán với TQ</span></label>
+          <label class="survey-opt"><input type="checkbox" value="du-hoc"><span class="survey-check"></span><span class="survey-label">Du học / thi HSK</span></label>
+          <label class="survey-opt"><input type="checkbox" value="di-lam"><span class="survey-check"></span><span class="survey-label">Đi làm cần dùng (sếp/đối tác TQ)</span></label>
+          <label class="survey-opt"><input type="checkbox" value="tinh-yeu"><span class="survey-check"></span><span class="survey-label">Có người yêu / gia đình TQ</span></label>
+          <label class="survey-opt"><input type="checkbox" value="du-lich"><span class="survey-check"></span><span class="survey-label">Du lịch TQ tự túc</span></label>
+          <label class="survey-opt"><input type="checkbox" value="giai-tri"><span class="survey-check"></span><span class="survey-label">Xem phim / nghe nhạc / đọc truyện TQ</span></label>
+          <label class="survey-opt"><input type="checkbox" value="livestream"><span class="survey-check"></span><span class="survey-label">Livestream / làm KOC Douyin</span></label>
+          <label class="survey-opt"><input type="checkbox" value="yeu-thich"><span class="survey-check"></span><span class="survey-label">Đơn giản là thích tiếng Trung</span></label>
+        </div>
+      </div>
+
+      <div class="survey-group">
+        <h3 class="survey-group-title">😩 Khó khăn lớn nhất</h3>
+        <div class="survey-options" id="surveyPain">
+          <label class="survey-opt"><input type="checkbox" value="phat-am"><span class="survey-check"></span><span class="survey-label">Phát âm / thanh điệu quá khó</span></label>
+          <label class="survey-opt"><input type="checkbox" value="han-tu"><span class="survey-check"></span><span class="survey-label">Chữ Hán quá nhiều, nhớ không nổi</span></label>
+          <label class="survey-opt"><input type="checkbox" value="nghe"><span class="survey-check"></span><span class="survey-label">Nghe không hiểu người TQ nói</span></label>
+          <label class="survey-opt"><input type="checkbox" value="noi"><span class="survey-check"></span><span class="survey-label">Biết nhưng không dám nói / nói không ra</span></label>
+          <label class="survey-opt"><input type="checkbox" value="ngu-phap"><span class="survey-check"></span><span class="survey-label">Ngữ pháp khó hiểu</span></label>
+          <label class="survey-opt"><input type="checkbox" value="chan"><span class="survey-check"></span><span class="survey-label">Học nhàm chán, không có động lực</span></label>
+          <label class="survey-opt"><input type="checkbox" value="thoi-gian"><span class="survey-check"></span><span class="survey-label">Không có thời gian học</span></label>
+          <label class="survey-opt"><input type="checkbox" value="thuc-te"><span class="survey-check"></span><span class="survey-label">Học xong không biết dùng ở đâu</span></label>
+        </div>
+      </div>
+
+      <div class="survey-group">
+        <h3 class="survey-group-title">💰 Bạn sẵn sàng trả bao nhiêu/tháng?</h3>
+        <div class="survey-options survey-radio" id="surveyPrice">
+          <label class="survey-opt"><input type="radio" name="price" value="free"><span class="survey-check"></span><span class="survey-label">Chỉ dùng bản miễn phí</span></label>
+          <label class="survey-opt"><input type="radio" name="price" value="49k"><span class="survey-check"></span><span class="survey-label">49.000đ — 99.000đ / tháng</span></label>
+          <label class="survey-opt"><input type="radio" name="price" value="99k"><span class="survey-check"></span><span class="survey-label">99.000đ — 199.000đ / tháng</span></label>
+          <label class="survey-opt"><input type="radio" name="price" value="199k"><span class="survey-check"></span><span class="survey-label">199.000đ — 399.000đ / tháng</span></label>
+          <label class="survey-opt"><input type="radio" name="price" value="399k"><span class="survey-check"></span><span class="survey-label">399.000đ+ nếu thật sự hiệu quả</span></label>
+        </div>
+      </div>
+
+      <div class="survey-group">
+        <h3 class="survey-group-title">✨ Tính năng nào hấp dẫn nhất?</h3>
+        <div class="survey-options" id="surveyFeature">
+          <label class="survey-opt"><input type="checkbox" value="chat-ai"><span class="survey-check"></span><span class="survey-label">Chat với nhân vật AI có tính cách</span></label>
+          <label class="survey-opt"><input type="checkbox" value="tinh-huong"><span class="survey-check"></span><span class="survey-label">Học qua tình huống đời thật</span></label>
+          <label class="survey-opt"><input type="checkbox" value="sai-vui"><span class="survey-check"></span><span class="survey-label">Nói sai = chuyện hài (nhớ lâu)</span></label>
+          <label class="survey-opt"><input type="checkbox" value="phim"><span class="survey-check"></span><span class="survey-label">Học qua phim / nhạc / Douyin</span></label>
+          <label class="survey-opt"><input type="checkbox" value="game"><span class="survey-check"></span><span class="survey-label">Mini game, quiz, thi đấu</span></label>
+          <label class="survey-opt"><input type="checkbox" value="voice"><span class="survey-check"></span><span class="survey-label">Luyện nói / phát âm với AI</span></label>
+          <label class="survey-opt"><input type="checkbox" value="van-hoa"><span class="survey-check"></span><span class="survey-label">Mỗi ngày 1 điều thú vị về TQ</span></label>
+          <label class="survey-opt"><input type="checkbox" value="con-duong"><span class="survey-check"></span><span class="survey-label">Chọn con đường học theo mục đích</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="survey-submit-area">
+      <button class="btn-primary" onclick="submitSurvey()" id="surveyBtn">Gửi khảo sát & Đăng ký thử</button>
+      <div id="surveyResult" style="display:none;margin-top:20px;text-align:center;">
+        <div style="font-size:24px;font-weight:900;color:var(--primary);margin-bottom:8px;">Cảm ơn bạn! 🎉</div>
+        <div style="color:var(--gray);font-size:15px;">Phản hồi của bạn giúp ShuōBa tạo giáo trình phù hợp nhất. Chúng tôi sẽ liên hệ khi ra mắt!</div>
+        <div id="surveyStats" style="margin-top:16px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="signup">
+  <div class="container">
+    <h2>Sẵn sàng sống bằng tiếng Trung chưa?<br>准备好用中文"活"了吗？</h2>
+    <p>Đăng ký nhận thông báo khi ShuōBa ra mắt. Miễn phí cho 500 người đầu tiên.</p>
+    <div class="cta-form">
+      <input type="email" class="cta-input" placeholder="Email của bạn..." id="emailInput">
+      <button class="cta-btn" onclick="submitEmail()">Đăng ký ngay</button>
+    </div>
+    <div class="cta-note">Không spam. Chỉ thông báo khi ra mắt.</div>
+    <div id="successMsg" style="display:none;margin-top:16px;font-size:18px;font-weight:700;">✅ Đã đăng ký! Chào mừng bạn đến thế giới ShuōBa.</div>
+  </div>
+</section>
+<footer><p>© 2025 说吧 ShuōBa — Học tiếng Trung bằng cách sống.<br><span style="font-size:12px;opacity:0.6;">一个让你用中文"活"的地方</span></p></footer>
+
+<script>
+// ========== GLOBAL GAME STATE ==========
+let totalXP=0, combo=0, streak=0;
+function addXP(n){totalXP+=n*(1+combo*0.2);document.getElementById('xpText').textContent=Math.round(totalXP)+' / 100';document.getElementById('xpFill').style.width=Math.min(totalXP,100)+'%';}
+function addCombo(){combo++;document.getElementById('comboVal').textContent=combo;if(combo>=3)showCombo('🔥 '+combo+'x COMBO!');}
+function resetCombo(){combo=0;document.getElementById('comboVal').textContent=0;}
+function addStreak(){streak++;document.getElementById('streakNum').textContent=streak;}
+
+// ========== EFFECTS ==========
+function showCombo(text){const p=document.getElementById('comboPopup');p.textContent=text;p.style.display='block';p.style.animation='none';p.offsetHeight;p.style.animation='comboAnim 1.2s ease forwards';setTimeout(()=>p.style.display='none',1200);}
+function shakeEl(el){el.classList.add('shake');setTimeout(()=>el.classList.remove('shake'),400);}
+function shootConfetti(){const box=document.getElementById('confettiBox');const colors=['#E63946','#F4A261','#2D6A4F','#7C3AED','#EC4899','#3B82F6'];for(let i=0;i<30;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'%';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=Math.random()*0.5+'s';c.style.animationDuration=(1.5+Math.random())+'s';box.appendChild(c);setTimeout(()=>c.remove(),3000);}}
+function floatEmoji(emoji,x,y){const e=document.createElement('div');e.className='float-emoji';e.textContent=emoji;e.style.left=x+'px';e.style.top=y+'px';document.body.appendChild(e);setTimeout(()=>e.remove(),1500);}
+
+// ========== DEMO SWITCH ==========
+function switchDemo(id){document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));const map={story:0,scenes:1,tones:2,drama:3,funny:4,speed:5,slot:6};document.querySelectorAll('.demo-tab')[map[id]].classList.add('active');document.getElementById('demo'+id.charAt(0).toUpperCase()+id.slice(1)).classList.add('active');}
+function scrollTo(s){document.querySelector(s).scrollIntoView({behavior:'smooth'});}
+const GSHEET_URL='https://script.google.com/macros/s/AKfycbzRSpNPCJeWABOiKKMqGxOYyHdy1nHYJad91-Shlgmn5rkDIRokXzYYIHRffNQcCh0/exec';
+function submitEmail(){const e=document.getElementById('emailInput');if(!e.value||!e.value.includes('@'))return;e.disabled=true;document.getElementById('successMsg').style.display='block';shootConfetti();fetch(GSHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({email:e.value})}).catch(()=>{});}
+
+// ========== STORY MODE ==========
+const storyChapters = [
+  { name:'老王',avatar:'👴',title:'Chợ Quảng Châu',chapter:'Chapter 1: Mặc cả',headerBg:'var(--primary)',
+    scenes:[
+      {mood:'😏',ai:{zh:'哎，越南来的吧？看看这个包，最新款！八十块。',py:'Āi, Yuènán lái de ba? Kàn kan zhège bāo, zuìxīn kuǎn! Bāshí kuài.',vn:'Ê, VN đến hả? Xem cái túi này, mẫu mới nhất! 80 tệ.'},
+        options:[
+          {zh:'老板，一百个的话，能不能便宜点？六十行吗？',vn:'Ông chủ, nếu 100 cái thì bớt được không? 60?',score:5,mood:'😤',feedback:'💡 \"能不能\" + \"的话\" = cấu trúc mặc cả chuyên nghiệp!',culture:'🧧 Ở TQ, không mặc cả = bị coi thường. Giá đầu luôn cao gấp 2-3 lần giá thật!'},
+          {zh:'太贵了吧！',vn:'Đắt quá!',score:2,mood:'😒',feedback:'💡 Phản ứng đúng nhưng chưa đề xuất giá. Luôn đưa ra con số cụ thể!',culture:null},
+          {zh:'好的，我买。',vn:'OK, tôi mua.',score:0,mood:'😄',feedback:'😅 Lão Vương cười toe — vì bán được giá cao nhất!',culture:null}
+        ]},
+      {mood:'😤',ai:{zh:'六十？！你杀价也太狠了！七十，最低了，不能再少。',py:'Liùshí?! Nǐ shā jià yě tài hěn le! Qīshí, zuìdī le.',vn:'60?! Ép giá quá! 70, thấp nhất rồi, không bớt nữa.'},
+        options:[
+          {zh:'七十包邮，再送五个样品，我马上微信转账。',vn:'70 bao ship, thêm 5 mẫu thử, tôi chuyển WeChat ngay.',score:5,mood:'🤝',feedback:'🔥 COMBO HOÀN HẢO! Đồng ý giá + đòi thêm + cam kết thanh toán nhanh = cao thủ!',culture:'🧧 \"马上\" (ngay lập tức) là từ thần kỳ — người TQ thích làm việc nhanh, dứt khoát.'},
+          {zh:'六十五，最后价格。',vn:'65, giá cuối cùng.',score:3,mood:'😐',feedback:'💡 \"最后价格\" = giá cuối — chiêu áp lực tốt!',culture:null},
+          {zh:'那我去别家看看吧。',vn:'Thôi tôi đi chỗ khác.',score:1,mood:'😰',feedback:'💡 Chiêu \"giả vờ bỏ đi\" — 50/50 hiệu quả!',culture:null}
+        ]}
+    ]},
+  { name:'马师傅',avatar:'🧑‍🍳',title:'Nhà hàng lẩu',chapter:'Chapter 2: Ăn trưa',headerBg:'#DC2626',
+    scenes:[
+      {mood:'😤',ai:{zh:'欢迎欢迎！几位？要吃什么锅底？我们有麻辣、番茄、菌汤。',py:'Huānyíng! Jǐ wèi? Yào chī shénme guōdǐ?',vn:'Chào mừng! Mấy người? Muốn ăn nước lẩu gì? Có cay, cà chua, nấm.'},
+        options:[
+          {zh:'一个人。来一个鸳鸯锅，一半麻辣一半番茄。',vn:'Một mình. Cho nồi uyên ương, nửa cay nửa cà chua.',score:5,mood:'👨‍🍳',feedback:'🔥 \"鸳鸯锅\" (yuānyāng guō) = nồi uyên ương (2 ngăn) — gọi vậy = dân chuyên!',culture:'🍜 \"鸳鸯\" nghĩa gốc là cặp chim uyên ương (biểu tượng tình yêu). Nồi lẩu 2 ngăn gọi vậy vì 2 vị khác nhau nhưng luôn bên nhau!'},
+          {zh:'我要辣的！',vn:'Tôi muốn cay!',score:3,mood:'😏',feedback:'💡 Ngắn gọn, hiểu được. Nhưng chưa nói mấy người, loại nồi gì.',culture:null},
+          {zh:'随便，你推荐吧。',vn:'Tuỳ, anh giới thiệu đi.',score:2,mood:'🤨',feedback:'💡 \"随便\" nghe hơi lười biếng. Đầu bếp Mã thích khách biết mình muốn gì!',culture:null}
+        ]},
+      {mood:'👨‍🍳',ai:{zh:'好嘞！要加什么菜？肥牛、毛肚、虾滑都是招牌！',py:'Hǎo lei! Yào jiā shénme cài? Féi niú, máo dǔ, xiā huá.',vn:'Được rồi! Thêm món gì? Bò cuộn, sách bò, tôm xay đều là đặc sản!'},
+        options:[
+          {zh:'毛肚和肥牛各来一份，再加一碗米饭。',vn:'Sách bò và bò cuộn mỗi thứ một phần, thêm một bát cơm.',score:5,mood:'😄',feedback:'🔥 \"各来一份\" = mỗi thứ 1 phần — cách gọi món chuẩn nhà hàng TQ!',culture:'🍜 毛肚 (máo dǔ) là LINH HỒN của lẩu Trùng Khánh. Nhúng đúng 7 giây — \"七上八下\" (7 lần nhúng lên 8 lần nhấn xuống) — quá 10 giây = dai!'},
+          {zh:'都要！全部！',vn:'Lấy hết! Tất cả!',score:2,mood:'🤣',feedback:'😂 Đầu bếp Mã: \"Ăn hết nổi không đấy?!\" — Ở TQ gọi quá nhiều = lãng phí = bị phán xét!',culture:null},
+          {zh:'什么是毛肚？',vn:'Sách bò là gì?',score:3,mood:'😊',feedback:'💡 Hỏi = tốt! Nhưng trong bản đầy đủ, ShuōBa sẽ dạy bạn tên món trước khi vào nhà hàng.',culture:null}
+        ]}
+    ]}
+];
+
+let storyChapter=0,storyScene=0,storyScore=0,storyMax=0,storyStats={perfect:0,good:0,bad:0};
+function initStory(){
+  storyChapter=0;storyScene=0;storyScore=0;storyMax=0;storyStats={perfect:0,good:0,bad:0};
+  storyChapters.forEach(c=>c.scenes.forEach(()=>storyMax+=5));
+  document.getElementById('storyResult').classList.remove('show');
+  document.getElementById('storyInput').style.display='block';
+  document.getElementById('storyMessages').innerHTML='';
+  updateStoryHeader();
+  addStorySystem('📍 Chợ Quảng Châu, 9h sáng. Hành trình của bạn bắt đầu...');
+  renderStoryScene();
+}
+function updateStoryHeader(){
+  const ch=storyChapters[storyChapter];
+  document.getElementById('storyAvatar').innerHTML=ch.avatar+'<span class="mood-indicator" id="storyMood">😏</span>';
+  document.getElementById('storyName').textContent=ch.name+' · '+ch.title;
+  document.getElementById('storyDesc').textContent=ch.chapter;
+  document.getElementById('storyHeader').style.background=ch.headerBg;
+}
+function setMood(m){document.getElementById('storyMood').textContent=m;document.getElementById('storyMood').style.animation='none';document.getElementById('storyMood').offsetHeight;document.getElementById('storyMood').style.animation='moodPop 0.4s ease';}
+function addStoryMsg(cls,html){const m=document.createElement('div');m.className='msg '+cls;m.innerHTML=html;document.getElementById('storyMessages').appendChild(m);document.getElementById('storyMessages').scrollTop=9999;}
+function addStorySystem(text){addStoryMsg('msg-system',text);}
+function renderStoryScene(){
+  const ch=storyChapters[storyChapter];const sc=ch.scenes[storyScene];
+  setMood(sc.mood);
+  addStoryMsg('msg-ai',sc.ai.zh+'<span class="pinyin">'+sc.ai.py+'</span><span class="vn">'+sc.ai.vn+'</span>');
+  const input=document.getElementById('storyInput');input.innerHTML='';
+  const opts=document.createElement('div');opts.className='chat-options';
+  sc.options.forEach((o,i)=>{const btn=document.createElement('button');btn.className='chat-option';btn.innerHTML='<div class="opt-zh">'+o.zh+'</div><div class="opt-vn">'+o.vn+'</div>';btn.onclick=function(e){pickStoryOption(i,e);};opts.appendChild(btn);});
+  input.appendChild(opts);
+}
+function pickStoryOption(idx,e){
+  const ch=storyChapters[storyChapter];const sc=ch.scenes[storyScene];const opt=sc.options[idx];
+  storyScore+=opt.score;
+  if(opt.score>=5){storyStats.perfect++;addCombo();addXP(15);addStreak();floatEmoji('🔥',e.clientX,e.clientY);shootConfetti();}
+  else if(opt.score>=3){storyStats.good++;addCombo();addXP(8);floatEmoji('👍',e.clientX,e.clientY);}
+  else{storyStats.bad++;resetCombo();addXP(2);shakeEl(document.getElementById('storyChat'));floatEmoji('😬',e.clientX,e.clientY);}
+  setMood(opt.mood);
+  addStoryMsg('msg-user',opt.zh);
+  addStoryMsg('msg-grammar',opt.feedback);
+  if(opt.culture)addStoryMsg('msg-culture','📚 '+opt.culture);
+  storyScene++;
+  if(storyScene<ch.scenes.length){setTimeout(()=>renderStoryScene(),500);}
+  else{storyChapter++;storyScene=0;
+    if(storyChapter<storyChapters.length){setTimeout(()=>{const nc=storyChapters[storyChapter];addStorySystem('🎬 '+nc.chapter+': '+nc.title);updateStoryHeader();setTimeout(()=>renderStoryScene(),500);},800);}
+    else{setTimeout(showStoryResult,800);}
+  }
+}
+function showStoryResult(){
+  document.getElementById('storyInput').style.display='none';
+  const r=document.getElementById('storyResult');r.classList.add('show');
+  const pct=Math.round((storyScore/storyMax)*100);
+  document.getElementById('storyScore').textContent=pct+'%';
+  document.getElementById('storyBreakdown').innerHTML='<div class="result-stat"><div class="val">'+storyStats.perfect+'</div><div class="lbl">Xuất sắc</div></div><div class="result-stat"><div class="val">'+storyStats.good+'</div><div class="lbl">Tạm ổn</div></div><div class="result-stat"><div class="val">'+storyStats.bad+'</div><div class="lbl">Cần luyện</div></div>';
+  let msg='',badges='';
+  if(pct>=80){msg='🏆 Bạn sống sót ngày đầu ở Quảng Châu như dân bản địa! Lão Vương và Đầu bếp Mã đều nể phục.';badges='<span class="badge">🏆 Dân Quảng Châu</span><span class="badge">🍜 Sành ăn</span><span class="badge">🔥 Combo King</span>';shootConfetti();}
+  else if(pct>=50){msg='👍 Ngày đầu ở TQ khá ổn! Mặc cả tạm giỏi, gọi món tạm chuẩn. Luyện thêm nhé!';badges='<span class="badge">📈 Đang tiến bộ</span><span class="badge">🌱 Tân binh Quảng Châu</span>';}
+  else{msg='😄 Bạn bị Lão Vương chặt giá và Đầu bếp Mã la! Nhưng đây mới là ngày đầu — quay lại luyện nhé!';badges='<span class="badge">🌱 Người mới</span>';}
+  document.getElementById('storyMsg').textContent=msg;
+  document.getElementById('storyBadges').innerHTML=badges;
+}
+
+// ========== FUNNY MODE ==========
+const funnyData=[
+  {ctx:'📍 Bạn muốn nói "Tôi muốn đi ngủ" với Tiểu Mỹ (bạn cùng phòng)',charMood:'😊',
+    opts:[
+      {zh:'我要睡了',vn:'Tôi muốn đi ngủ rồi',ok:true,reaction:'✅ Tiểu Mỹ: "晚安！" (Ngủ ngon!) Cô ấy tắt đèn cho bạn.',mood:'😴'},
+      {zh:'我要睡你',vn:'Tôi muốn ngủ... với bạn 😱',ok:false,reaction:'🤣 BẠN VỪA NÓI "Tôi muốn NGỦ VỚI BẠN"!\n\nTiểu Mỹ: "你疯了吗?!" (BẠN ĐIÊN À?!) *ném gối vào mặt*\n\n💡 "睡了" (shuì le) = đi ngủ RỒI\n"睡你" (shuì nǐ) = ngủ với BẠN\nMột chữ "了" vs "你" = thiên đường vs địa ngục!',mood:'🤬'},
+      {zh:'我困了，晚安',vn:'Tôi buồn ngủ rồi, chúc ngủ ngon',ok:true,reaction:'✅ Rất tự nhiên! 困 (kùn) = buồn ngủ. Tiểu Mỹ: "我也困了~" (Em cũng buồn ngủ~)',mood:'😊'}
+    ]},
+  {ctx:'📍 Nhà hàng: Bạn muốn khen đầu bếp Mã "Món này ngon quá!"',charMood:'👨‍🍳',
+    opts:[
+      {zh:'师傅，太好吃了！',vn:'Sư phụ, ngon quá!',ok:true,reaction:'✅ Đầu bếp Mã cười toe: "那当然！" (Đương nhiên rồi!) và múc thêm cho bạn một bát miễn phí.',mood:'😄'},
+      {zh:'你很好吃',vn:'ANH rất ngon 😳',ok:false,reaction:'🤣🤣 BẠN VỪA NÓI \"ANH ẤY RẤT NGON\" chứ không phải món ăn!\n\nĐầu bếp Mã đỏ mặt, cầm dao hỏi: \"你什么意思？！\" (Ý bạn là gì?!)\n\n💡 \"好吃\" khi dùng cho NGƯỜI = ám chỉ rất khác!\n\"菜很好吃\" = MÓN ĂN ngon ✅\n\"你很好吃\" = BẠN rất \"ngon\" ❌💀',mood:'😡'},
+      {zh:'不错不错',vn:'Tạm được tạm được',ok:false,reaction:'😤 Đầu bếp Mã: \"什么叫不错?! 这是最好的!\" (Sao gọi là tạm?! Đây là ngon nhất!)\n\n💡 \"不错\" = cũng được — nghe hơi xem thường với đầu bếp tự hào. Dùng \"太好吃了\" mạnh hơn!',mood:'😤'}
+    ]},
+  {ctx:'📍 Cảnh sát Triệu hỏi: Bạn muốn nói "Tôi bị mất ví"',charMood:'👮',
+    opts:[
+      {zh:'警官，我的钱包丢了',vn:'Sĩ quan, ví tôi bị mất rồi',ok:true,reaction:'✅ Sĩ quan Triệu gật đầu, lấy giấy ghi: \"在哪里丢的？\" (Mất ở đâu?). Bạn đã trình báo thành công!',mood:'📝'},
+      {zh:'我没有钱了',vn:'Tôi hết tiền rồi',ok:false,reaction:'😅 Sĩ quan Triệu nhìn bạn thương hại: \"那你去找工作吧\" (Vậy bạn đi tìm việc đi).\n\n💡 \"没有钱\" = không có tiền (nghèo)\n\"钱包丢了\" = ví bị MẤT (cần trình báo)\nHoàn toàn khác nhau!',mood:'😐'},
+      {zh:'有人偷了我！',vn:'Có người ăn trộm... tôi?!',ok:false,reaction:'🤣 \"偷了我\" = trộm TÔI (bắt cóc?!). Sĩ quan Triệu giật mình gọi thêm 3 xe cảnh sát!\n\n💡 \"偷了我的钱包\" = trộm VÍ CỦA TÔI ✅\n\"偷了我\" = bắt cóc TÔI ❌\nThiếu \"的钱包\" = thay đổi hoàn toàn!',mood:'😨'}
+    ]}
+];
+let funnyStep=0;
+function initFunny(){funnyStep=0;document.getElementById('funnyMessages').innerHTML='<div class="msg msg-system">Chọn câu bạn nghĩ ĐÚNG. Chọn sai = cười ra nước mắt 😂</div>';renderFunny();}
+function renderFunny(){
+  const s=funnyData[funnyStep];const msgs=document.getElementById('funnyMessages');const input=document.getElementById('funnyInput');
+  const ctx=document.createElement('div');ctx.className='msg msg-system';ctx.textContent=s.ctx;msgs.appendChild(ctx);
+  input.innerHTML='';const opts=document.createElement('div');opts.className='chat-options';
+  s.opts.forEach((o,i)=>{const btn=document.createElement('button');btn.className='chat-option';btn.innerHTML='<div class="opt-zh">'+o.zh+'</div><div class="opt-vn">'+o.vn+'</div>';btn.onclick=function(e){pickFunny(i,e);};opts.appendChild(btn);});
+  input.appendChild(opts);msgs.scrollTop=9999;
+}
+function pickFunny(idx,e){
+  const s=funnyData[funnyStep];const o=s.opts[idx];const msgs=document.getElementById('funnyMessages');
+  addStoryMsgTo(msgs,'msg-user',o.zh);
+  const fb=document.createElement('div');fb.className='msg msg-funny';fb.textContent=o.reaction;msgs.appendChild(fb);
+  if(o.ok){floatEmoji('✅',e.clientX,e.clientY);addXP(10);addCombo();}
+  else{floatEmoji('🤣',e.clientX,e.clientY);shakeEl(msgs.parentElement);addXP(5);resetCombo();}
+  funnyStep++;
+  if(funnyStep<funnyData.length){const nb=document.createElement('div');nb.className='msg msg-system';nb.innerHTML='<button style="background:var(--pink);color:white;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-family:inherit;" onclick="renderFunny()">Tình huống tiếp →</button>';msgs.appendChild(nb);}
+  else{addStoryMsgTo(msgs,'msg-system','🎉 Hết demo! Bản đầy đủ có 200+ tình huống "sai nhưng vui" — bạn sẽ không bao giờ quên!');}
+  document.getElementById('funnyInput').innerHTML='';msgs.scrollTop=9999;
+}
+function addStoryMsgTo(container,cls,html){const m=document.createElement('div');m.className='msg '+cls;m.innerHTML=html;container.appendChild(m);}
+
+// ========== SPEED QUIZ ==========
+const speedData=[
+  {char:'便宜',hint:'piányi',opts:['Đắt','Rẻ','Đẹp','Xấu'],correct:1},
+  {char:'发货',hint:'fā huò',opts:['Nhận hàng','Giao hàng','Trả hàng','Đổi hàng'],correct:1},
+  {char:'质量',hint:'zhìliàng',opts:['Số lượng','Giá cả','Chất lượng','Kích thước'],correct:2},
+  {char:'包邮',hint:'bāo yóu',opts:['Bao ship','Bao bì','Bao lì xì','Bao ăn'],correct:0},
+  {char:'退款',hint:'tuì kuǎn',opts:['Hoàn tiền','Nạp tiền','Chuyển tiền','Rút tiền'],correct:0},
+  {char:'加微信',hint:'jiā wēixìn',opts:['Xoá WeChat','Chặn WeChat','Thêm WeChat','Mở WeChat'],correct:2},
+  {char:'好评',hint:'hǎo píng',opts:['Đánh giá xấu','Đánh giá tốt','Không đánh giá','Xoá đánh giá'],correct:1},
+  {char:'下单',hint:'xià dān',opts:['Huỷ đơn','Đặt đơn','Sửa đơn','Xem đơn'],correct:1},
+];
+let speedIdx=0,speedCorrect=0,speedTimer=null,speedTimeLeft=0;
+function initSpeed(){speedIdx=0;speedCorrect=0;renderSpeedQ();}
+function renderSpeedQ(){
+  if(speedIdx>=speedData.length){showSpeedResult();return;}
+  const q=speedData[speedIdx];const body=document.getElementById('speedBody');
+  body.innerHTML='<div class="speed-timer"><div class="speed-timer-fill" id="speedFill"></div></div><div class="speed-question"><div class="char">'+q.char+'</div><div class="hint">'+q.hint+' — Câu '+(speedIdx+1)+'/'+speedData.length+'</div></div><div class="speed-options">'+q.opts.map((o,i)=>'<button class="speed-opt" onclick="answerSpeed('+i+','+q.correct+',this)">'+o+'</button>').join('')+'</div>';
+  speedTimeLeft=100;clearInterval(speedTimer);
+  const fill=document.getElementById('speedFill');fill.style.width='100%';
+  speedTimer=setInterval(()=>{speedTimeLeft-=1;fill.style.width=speedTimeLeft+'%';if(speedTimeLeft<=0){clearInterval(speedTimer);speedIdx++;setTimeout(renderSpeedQ,500);}},100);
+}
+function answerSpeed(idx,correct,btn){
+  clearInterval(speedTimer);
+  const opts=btn.parentElement.querySelectorAll('.speed-opt');
+  opts.forEach((o,i)=>{o.disabled=true;o.style.pointerEvents='none';if(i===correct)o.classList.add('correct');else if(i===idx&&i!==correct)o.classList.add('wrong');});
+  if(idx===correct){speedCorrect++;addXP(12);addCombo();floatEmoji('⚡',btn.getBoundingClientRect().x,btn.getBoundingClientRect().y);}
+  else{resetCombo();shakeEl(btn.parentElement);}
+  speedIdx++;setTimeout(renderSpeedQ,800);
+}
+function showSpeedResult(){
+  document.getElementById('speedBody').innerHTML='<div class="speed-score"><div class="big">'+speedCorrect+'/'+speedData.length+'</div><div style="color:rgba(255,255,255,0.6);margin:8px 0;">Câu đúng</div><div style="color:var(--gold);font-size:16px;">'+(speedCorrect>=6?'🔥 Siêu nhanh! Bạn sẽ mặc cả vèo vèo ở TQ!':speedCorrect>=4?'👍 Khá lắm! Luyện thêm để nhanh hơn!':'💪 Từ vựng thương mại cần luyện thêm nhé!')+'</div><button class="btn-primary" style="margin-top:20px;" onclick="initSpeed()">Chơi lại</button></div>';
+  if(speedCorrect>=6)shootConfetti();
+}
+
+// ========== SLOT MACHINE ==========
+const slotChars=[
+  {chars:['买','卖','贵','便','宜','好','大','小','多','少','包','邮','质','量','价','格'],
+   words:{'买卖':'mua bán','便宜':'rẻ','质量':'chất lượng','价格':'giá cả','大小':'kích thước','多少':'bao nhiêu','包邮':'bao ship','好贵':'đắt quá'}}
+];
+let slotReels=[],slotLocked=[false,false,false],slotSpinning=false,slotRound=0;
+function initSlot(){
+  slotRound=0;
+  document.getElementById('slotBody').innerHTML=
+    '<div style="text-align:center;color:rgba(255,255,255,0.6);font-size:13px;margin-bottom:16px;">Bấm QUAY → xem 3 chữ → ghép thành từ có nghĩa!</div>'+
+    '<div class="slot-machine"><div class="slot-reel" id="reel0">?</div><div class="slot-reel" id="reel1">?</div><div class="slot-reel" id="reel2">?</div></div>'+
+    '<div class="slot-meaning" id="slotMeaning">Bấm Quay để bắt đầu!</div>'+
+    '<button class="slot-btn" id="slotBtn" onclick="spinSlot()">🎰 QUAY!</button>'+
+    '<div id="slotFeedback" style="text-align:center;margin-top:16px;"></div>';
+}
+function spinSlot(){
+  const chars=slotChars[0].chars;
+  const reels=[0,1,2];
+  reels.forEach(i=>{
+    const el=document.getElementById('reel'+i);
+    el.classList.add('spinning');
+    el.classList.remove('locked');
+  });
+  document.getElementById('slotMeaning').textContent='Đang quay...';
+  document.getElementById('slotFeedback').innerHTML='';
+  setTimeout(()=>{
+    slotReels=reels.map(()=>chars[Math.floor(Math.random()*chars.length)]);
+    reels.forEach(i=>{
+      const el=document.getElementById('reel'+i);
+      el.classList.remove('spinning');
+      el.textContent=slotReels[i];
+    });
+    checkSlotWord();
+  },1000);
+}
+function checkSlotWord(){
+  const words=slotChars[0].words;
+  const combo2=[slotReels[0]+slotReels[1],slotReels[1]+slotReels[2],slotReels[0]+slotReels[2]];
+  const combo3=slotReels.join('');
+  let found=null,foundWord='';
+  for(const w of [...combo2,combo3]){if(words[w]){found=words[w];foundWord=w;break;}}
+  if(found){
+    document.getElementById('slotMeaning').innerHTML='<span style="color:var(--gold);font-size:18px;font-weight:700;">✨ '+foundWord+' = '+found+'</span>';
+    document.getElementById('slotFeedback').innerHTML='<span style="color:#6EE7B7;">🎉 Bạn ghép được từ! +15 XP</span>';
+    addXP(15);addCombo();shootConfetti();
+  } else {
+    document.getElementById('slotMeaning').innerHTML='<span style="color:rgba(255,255,255,0.5);">'+slotReels.join(' ')+' — Chưa ghép được từ nào</span>';
+    document.getElementById('slotFeedback').innerHTML='<span style="color:rgba(255,255,255,0.4);">Quay lại thử vận may!</span>';
+  }
+  slotRound++;
+  document.getElementById('slotBtn').textContent=slotRound>=5?'🔄 Chơi lại':'🎰 QUAY TIẾP!';
+  if(slotRound>=5)document.getElementById('slotBtn').onclick=()=>{slotRound=0;spinSlot();};
+}
+
+// ========== SCENES: TÌNH HUỐNG ĐỜI THẬT ==========
+const sceneData=[
+  {name:'小美',avatar:'👩',title:'Hẹn hò lần đầu',headerBg:'var(--pink)',
+    scenes:[
+      {mood:'😊',ai:{zh:'你好呀～今天你好帅哦！我们去哪里吃？',py:'Nǐ hǎo ya~ Jīntiān nǐ hǎo shuài o! Wǒmen qù nǎlǐ chī?',vn:'Chào bạn~ Hôm nay bạn đẹp trai ghê! Mình đi ăn đâu?'},
+        options:[
+          {zh:'你也很漂亮！我们去吃火锅吧，我知道一家很好的。',vn:'Bạn cũng rất xinh! Mình đi ăn lẩu, mình biết một quán rất ngon.',score:5,mood:'😍',fb:'🔥 Khen lại + đề xuất cụ thể = điểm cộng lớn! \"也\" = cũng — phản hồi tự nhiên.'},
+          {zh:'随便，你决定吧。',vn:'Tuỳ, bạn quyết định đi.',score:1,mood:'😒',fb:'😬 \"随便\" là từ BỊ GHÉT NHẤT khi hẹn hò ở TQ! Tiểu Mỹ sẽ nghĩ bạn không quan tâm.'},
+          {zh:'你饿了吗？',vn:'Bạn đói chưa?',score:3,mood:'😐',fb:'💡 An toàn nhưng nhạt. Hẹn hò cần chủ động hơn!'}
+        ]},
+      {mood:'😍',ai:{zh:'火锅！我最喜欢了～对了，你能吃辣吗？',py:'Huǒguō! Wǒ zuì xǐhuan le~ Duìle, nǐ néng chī là ma?',vn:'Lẩu! Em thích nhất luôn~ À mà, bạn ăn cay được không?'},
+        options:[
+          {zh:'我可以吃辣，但是不要太辣。微辣就好！',vn:'Mình ăn cay được, nhưng đừng quá cay. Hơi cay thôi!',score:5,mood:'🥰',fb:'🔥 \"微辣\" (wēi là) = cay nhẹ — từ quan trọng khi ăn ở TQ! Và câu trả lời rất tự nhiên.'},
+          {zh:'我不怕辣！',vn:'Mình không sợ cay!',score:3,mood:'😄',fb:'💡 Dũng cảm! Nhưng nếu bạn không ăn cay thật... hẹn hò đầu tiên mà khóc vì cay thì xấu hổ lắm 😂'},
+          {zh:'我不能吃辣。',vn:'Mình không ăn cay được.',score:2,mood:'😊',fb:'💡 OK nhưng hơi cụt. Thêm \"但是我可以试试\" (nhưng mình thử được) sẽ dễ thương hơn!'}
+        ]}
+    ]},
+  {name:'刘师傅',avatar:'🚗',title:'Gọi taxi Didi',headerBg:'#F97316',
+    scenes:[
+      {mood:'😐',ai:{zh:'上车吧！去哪儿？',py:'Shàng chē ba! Qù nǎr?',vn:'Lên xe đi! Đi đâu?'},
+        options:[
+          {zh:'师傅，去天河城，走最快的路。大概多长时间？',vn:'Anh ơi, đến Thiên Hà Thành, đi đường nhanh nhất. Khoảng bao lâu?',score:5,mood:'👍',fb:'🔥 \"走最快的路\" = đi đường nhanh nhất. \"多长时间\" = bao lâu. Nói như dân bản địa!'},
+          {zh:'天河城。',vn:'Thiên Hà Thành.',score:2,mood:'😐',fb:'💡 Quá ngắn. Tài xế TQ thích chat — im lặng = khó xử!'},
+          {zh:'我要去... 那个... 商场...',vn:'Tôi muốn đến... cái đó... trung tâm thương mại...',score:1,mood:'🤨',fb:'😅 \"那个\" + ngập ngừng = tài xế sẽ bật GPS tìm giúp. Nhưng cần nói rõ tên địa điểm!'}
+        ]},
+      {mood:'👍',ai:{zh:'天河城啊，二十分钟左右。这个点不堵车。你是越南来的吗？',py:'Tiānhé chéng a, èrshí fēnzhōng zuǒyòu. Nǐ shì Yuènán lái de ma?',vn:'Thiên Hà Thành à, khoảng 20 phút. Giờ này không kẹt xe. Bạn từ VN tới hả?'},
+        options:[
+          {zh:'对，我是越南人。来广州出差。师傅，这附近有什么好吃的吗？',vn:'Đúng, tôi người VN. Đến Quảng Châu công tác. Anh ơi, gần đây có gì ngon không?',score:5,mood:'😄',fb:'🔥 Hỏi tài xế recommend đồ ăn = cách tốt nhất để tìm quán ngon ở TQ! Họ biết hết.'},
+          {zh:'是的。',vn:'Vâng.',score:2,mood:'😐',fb:'💡 Tài xế muốn nói chuyện mà bạn \"cụt\" quá! Taxi TQ = lớp học miễn phí — tận dụng đi!'},
+          {zh:'对对，我来旅游的。广州很漂亮！',vn:'Đúng đúng, tôi đi du lịch. Quảng Châu đẹp lắm!',score:4,mood:'😊',fb:'💡 Khen thành phố = tài xế vui. \"来旅游的\" = đến du lịch — cấu trúc gọn.'}
+        ]}
+    ]},
+  {name:'林医生',avatar:'👨‍⚕️',title:'Đau bụng ở TQ',headerBg:'var(--green)',
+    scenes:[
+      {mood:'🩺',ai:{zh:'你好，哪里不舒服？',py:'Nǐ hǎo, nǎlǐ bù shūfu?',vn:'Xin chào, bạn khó chịu ở đâu?'},
+        options:[
+          {zh:'医生，我肚子很疼，从昨天晚上开始的。可能吃坏了什么东西。',vn:'Bác sĩ, tôi đau bụng rất, từ tối qua. Có lẽ ăn phải đồ không sạch.',score:5,mood:'📝',fb:'🔥 Miêu tả đầy đủ: triệu chứng (肚子疼) + thời gian (昨天晚上) + nguyên nhân nghi ngờ (吃坏). BS rất hài lòng!'},
+          {zh:'我不好... 肚子...',vn:'Tôi không khoẻ... bụng...',score:1,mood:'😟',fb:'😅 BS Lâm hiểu nhưng phải hỏi lại 5 câu nữa. Ở bệnh viện TQ đông bệnh nhân — nói rõ = khám nhanh hơn!'},
+          {zh:'肚子疼。',vn:'Đau bụng.',score:3,mood:'🤔',fb:'💡 Đúng nhưng thiếu chi tiết. BS sẽ hỏi: \"多长时间了？\" (bao lâu rồi?), \"吃了什么？\" (ăn gì?)'}
+        ]},
+      {mood:'📝',ai:{zh:'好的，我给你开点药。这个一天吃三次，饭后吃。过敏什么药吗？',py:'Hǎo de, wǒ gěi nǐ kāi diǎn yào. Zhège yì tiān chī sān cì, fàn hòu chī. Guòmǐn shénme yào ma?',vn:'OK, tôi kê thuốc cho bạn. Thuốc này ngày uống 3 lần, sau ăn. Bạn dị ứng thuốc gì không?'},
+        options:[
+          {zh:'我没有过敏的。医生，这个药在药店能买到吗？',vn:'Tôi không dị ứng gì. BS, thuốc này mua ở hiệu thuốc được không?',score:5,mood:'😊',fb:'🔥 \"药店\" (yào diàn) = hiệu thuốc — từ cực quan trọng khi ở TQ! Hỏi rất thực tế.'},
+          {zh:'没有。谢谢医生。',vn:'Không có. Cảm ơn bác sĩ.',score:3,mood:'😊',fb:'💡 Lịch sự, đầy đủ. Nhưng hỏi thêm về cách uống sẽ an toàn hơn!'},
+          {zh:'过敏？什么意思？',vn:'Dị ứng? Nghĩa là gì?',score:2,mood:'😐',fb:'💡 \"过敏\" (guòmǐn) = dị ứng — từ y tế PHẢI biết! Nếu bạn dị ứng mà không hiểu câu hỏi → nguy hiểm.'}
+        ]}
+    ]},
+  {name:'小林',avatar:'👩‍💻',title:'Livestream bán hàng',headerBg:'var(--purple)',
+    scenes:[
+      {mood:'🎬',ai:{zh:'好了，准备好了吗？三、二、一，开播！先跟粉丝们打个招呼吧！',py:'Hǎo le, zhǔnbèi hǎo le ma? Sān, èr, yī, kāi bō! Xiān gēn fěnsī men dǎ ge zhāohū ba!',vn:'OK, sẵn sàng chưa? 3, 2, 1, bắt đầu! Chào fan đi!'},
+        options:[
+          {zh:'大家好！欢迎来到我的直播间！今天给大家带来越南特产，超好用的！',vn:'Mọi người xin chào! Chào mừng đến livestream của mình! Hôm nay mang đến đặc sản VN, siêu tốt!',score:5,mood:'🔥',fb:'🔥 MỞ BÀI HOÀN HẢO! \"直播间\" = phòng livestream, \"特产\" = đặc sản, \"超好用\" = siêu tốt dùng. Dân chuyên!'},
+          {zh:'你好你好！',vn:'Xin chào xin chào!',score:2,mood:'😐',fb:'😅 Quá ngắn cho livestream! Khán giả sẽ lướt đi ngay. Cần hook mạnh trong 3 giây đầu!'},
+          {zh:'大家好，我是越南人，今天... 呃... 卖东西。',vn:'Mọi người xin chào, tôi là người VN, hôm nay... ờ... bán đồ.',score:1,mood:'😬',fb:'😬 Tiểu Lâm: \"不行不行！\" (Không được!) — Livestream cần NĂNG LƯỢNG! Không được ngập ngừng!'}
+        ]},
+      {mood:'🔥',ai:{zh:'不错不错！现在有人问价格了，赶快回答！评论区说"多少钱"。',py:'Búcuò! Xiànzài yǒu rén wèn jiàgé le, gǎnkuài huídá!',vn:'Được lắm! Có người hỏi giá rồi, trả lời nhanh! Comment hỏi "bao nhiêu tiền".'},
+        options:[
+          {zh:'宝宝们，这个原价九十九，今天直播间专属价只要五十九！限量一百个，拍完就没了！',vn:'Các bạn ơi, giá gốc 99, hôm nay giá livestream chỉ 59! Giới hạn 100 cái, hết là hết!',score:5,mood:'🤩',fb:'🔥🔥 ĐỈNH CAO LIVESTREAM! \"宝宝们\" = cưng ơi (cách gọi fan), \"专属价\" = giá độc quyền, \"拍完就没了\" = hết là hết. Tiểu Lâm muốn nhận bạn làm học trò!'},
+          {zh:'五十九块。',vn:'59 tệ.',score:2,mood:'😤',fb:'😤 Tiểu Lâm: \"就这？\" (Có vậy thôi sao?) — Bán hàng livestream phải TẠO CẢM GIÁC KHAN HIẾM + KHẨN CẤP!'},
+          {zh:'这个不贵的，你们可以买。',vn:'Cái này không đắt, mọi người mua được.',score:1,mood:'🤦',fb:'🤦 \"不贵\" = không đắt nghe như đang xin người ta mua! Livestream cần \"超值\" (siêu hời), \"赶紧抢\" (nhanh tay mua)!'}
+        ]}
+    ]}
+];
+
+let sceneIdx=0,sceneStep=0;
+function initScenes(){sceneIdx=0;sceneStep=0;loadScene(0);}
+function loadScene(idx){
+  sceneIdx=idx;sceneStep=0;
+  document.querySelectorAll('.scene-btn').forEach((b,i)=>{b.classList.toggle('active',i===idx);});
+  const s=sceneData[idx];
+  document.getElementById('sceneAvatar').innerHTML=s.avatar+'<span class="mood-indicator" id="sceneMood">'+s.scenes[0].mood+'</span>';
+  document.getElementById('sceneName').textContent=s.name+' · '+s.title;
+  document.getElementById('sceneHeader').style.background=s.headerBg;
+  document.getElementById('sceneMessages').innerHTML='<div class="msg msg-system">📍 '+s.title+' — Bắt đầu!</div>';
+  document.getElementById('sceneInput').style.display='block';
+  renderSceneStep();
+}
+function renderSceneStep(){
+  const s=sceneData[sceneIdx];if(sceneStep>=s.scenes.length){addStoryMsgTo(document.getElementById('sceneMessages'),'msg-system','🎉 Hết tình huống! Trong bản đầy đủ có 50+ tình huống cho mỗi con đường.');document.getElementById('sceneInput').innerHTML='';return;}
+  const sc=s.scenes[sceneStep];
+  document.getElementById('sceneMood').textContent=sc.mood;
+  addStoryMsgTo(document.getElementById('sceneMessages'),'msg-ai',sc.ai.zh+'<span class="pinyin">'+sc.ai.py+'</span><span class="vn">'+sc.ai.vn+'</span>');
+  const input=document.getElementById('sceneInput');input.innerHTML='';
+  const opts=document.createElement('div');opts.className='chat-options';
+  sc.options.forEach((o,i)=>{const btn=document.createElement('button');btn.className='chat-option';btn.innerHTML='<div class="opt-zh">'+o.zh+'</div><div class="opt-vn">'+o.vn+'</div>';btn.onclick=function(e){
+    addStoryMsgTo(document.getElementById('sceneMessages'),'msg-user',o.zh);
+    addStoryMsgTo(document.getElementById('sceneMessages'),'msg-grammar',o.fb);
+    document.getElementById('sceneMood').textContent=o.mood;
+    if(o.score>=5){addXP(15);addCombo();floatEmoji('🔥',e.clientX,e.clientY);}else if(o.score>=3){addXP(8);floatEmoji('👍',e.clientX,e.clientY);}else{resetCombo();shakeEl(document.getElementById('sceneMessages').parentElement);floatEmoji('😬',e.clientX,e.clientY);}
+    sceneStep++;setTimeout(()=>renderSceneStep(),500);
+  };opts.appendChild(btn);});
+  input.appendChild(opts);
+  document.getElementById('sceneMessages').scrollTop=9999;
+}
+
+// ========== TONES: PHÁT ÂM ==========
+const toneData=[
+  {char:'妈',tones:[{py:'mā',tone:1,mean:'Mẹ',mark:'—'},{py:'má',tone:2,mean:'Tê (gai)',mark:'/'},{py:'mǎ',tone:3,mean:'Ngựa',mark:'V'},{py:'mà',tone:4,mean:'Mắng/chửi',mark:'\\'}],
+    story:'Nói sai thanh: "妈 (mẹ)" thành "马 (ngựa)" = gọi mẹ là ngựa! Hoặc "骂 (mắng)" = tự chửi mình!',correct:0,question:'Thanh nào nghĩa là MẸ?'},
+  {char:'买/卖',tones:[{py:'mǎi',tone:3,mean:'MUA',mark:'V'},{py:'mài',tone:4,mean:'BÁN',mark:'\\'},{py:'mái',tone:2,mean:'Chôn/giấu',mark:'/'},{py:'māi',tone:1,mean:'(không có)',mark:'—'}],
+    story:'\"我要买\" (mua) vs \"我要卖\" (bán) — chỉ khác THANH mà nghĩa ngược 180°! Mặc cả mà nói sai = bán luôn hàng mình!',correct:0,question:'Thanh nào nghĩa là MUA?'},
+  {char:'问/吻',tones:[{py:'wèn',tone:4,mean:'Hỏi',mark:'\\'},{py:'wěn',tone:3,mean:'Hôn',mark:'V'},{py:'wēn',tone:1,mean:'Ấm',mark:'—'},{py:'wén',tone:2,mean:'Nghe/ngửi',mark:'/'}],
+    story:'\"我想问你\" = tôi muốn HỎI bạn. \"我想吻你\" = tôi muốn HÔN bạn. Sai thanh 4 thành thanh 3 = bị tát hoặc được hôn! 😂',correct:0,question:'Thanh nào nghĩa là HỎI?'},
+  {char:'水/睡',tones:[{py:'shuǐ',tone:3,mean:'Nước',mark:'V'},{py:'shuì',tone:4,mean:'Ngủ',mark:'\\'},{py:'shuí',tone:2,mean:'Ai (谁)',mark:'/'},{py:'shuī',tone:1,mean:'(không có)',mark:'—'}],
+    story:'\"我要水\" = tôi muốn NƯỚC. \"我要睡\" = tôi muốn NGỦ. Gọi nước uống mà nói thành đòi ngủ = nhân viên bối rối!',correct:0,question:'Thanh nào nghĩa là NƯỚC?'}
+];
+let toneIdx=0,toneScore=0;
+function initTones(){toneIdx=0;toneScore=0;renderTone();}
+function renderTone(){
+  if(toneIdx>=toneData.length){document.getElementById('tonesBody').innerHTML='<div style="text-align:center;padding:32px;"><div style="font-size:48px;font-weight:900;color:var(--gold);">'+toneScore+'/'+toneData.length+'</div><div style="color:rgba(255,255,255,0.6);margin:8px 0;">Câu đúng</div><div style="color:var(--gold);margin:16px 0;">'+(toneScore>=3?'🔥 Xuất sắc! Tai nghe của bạn rất tốt!':'💪 Thanh điệu cần luyện thêm — nhưng đây là bước quan trọng nhất!')+'</div><button class="btn-primary" onclick="initTones()">Chơi lại</button></div>';if(toneScore>=3)shootConfetti();return;}
+  const t=toneData[toneIdx];
+  document.getElementById('tonesBody').innerHTML=
+    '<div class="tone-display"><div class="tone-char">'+t.char+'</div><div style="color:var(--gold);font-size:14px;margin-top:8px;">'+t.question+'</div><div style="color:rgba(255,255,255,0.4);font-size:12px;margin-top:4px;">Câu '+(toneIdx+1)+'/'+toneData.length+'</div></div>'+
+    '<div class="tone-options-grid">'+t.tones.map((tn,i)=>'<button class="tone-opt" onclick="answerTone('+i+','+t.correct+',this)"><div class="tone-mark">'+tn.mark+' '+tn.py+'</div><div class="tone-name">Thanh '+tn.tone+': '+tn.mean+'</div></button>').join('')+'</div>'+
+    '<div style="margin-top:16px;padding:12px;background:rgba(236,72,153,0.1);border-radius:10px;color:#F9A8D4;font-size:13px;line-height:1.6;" id="toneStory" style="display:none;">'+t.story+'</div>'+
+    '<div id="toneFeedback" style="text-align:center;margin-top:12px;display:none;"></div>';
+}
+function answerTone(idx,correct,btn){
+  const opts=btn.parentElement.querySelectorAll('.tone-opt');
+  opts.forEach((o,i)=>{o.disabled=true;o.style.pointerEvents='none';if(i===correct)o.classList.add('correct');else if(i===idx&&i!==correct)o.classList.add('wrong');});
+  if(idx===correct){toneScore++;addXP(12);addCombo();}else{resetCombo();}
+  const fb=document.getElementById('toneFeedback');fb.style.display='block';
+  fb.innerHTML=(idx===correct?'<span style="color:#6EE7B7;font-weight:700;">✅ Chính xác!</span>':'<span style="color:#FCA5A5;font-weight:700;">❌ Sai rồi!</span>')+
+    '<br><button class="btn-primary" style="margin-top:12px;padding:10px 24px;font-size:14px;" onclick="toneIdx++;renderTone();">Câu tiếp →</button>';
+}
+
+// ========== DRAMA: HỌC QUA PHIM ==========
+const dramaData=[
+  {drama:'Hậu Cung Chân Hoàn Truyện (甄嬛传)',context:'Chân Hoàn nói với hoàng thượng trong cung điện',
+    line:'臣妾做不到啊！',pinyin:'Chén qiè zuò bú dào a!',
+    question:'Câu này nghĩa là gì?',
+    opts:['Thần thiếp xin vâng!','Thần thiếp làm không được!','Thần thiếp rất vui!','Thần thiếp xin đi!'],correct:1,
+    explain:'\"做不到\" = làm không được. Câu kinh điển nhất phim TQ! Dân mạng dùng khi bị yêu cầu điều bất khả thi. Sếp bảo OT? \"臣妾做不到啊!\" 😂',
+    slang:'🔥 Cách dùng ngoài đời: Khi ai đó đòi hỏi quá đáng → \"做不到!\" (Không làm được!)'},
+  {drama:'Tây Du Ký (西游记)',context:'Tôn Ngộ Không nói với yêu quái',
+    line:'妖怪，吃俺老孙一棒！',pinyin:'Yāoguài, chī ǎn Lǎo Sūn yì bàng!',
+    question:'Ngộ Không đang nói gì?',
+    opts:['Yêu quái, ăn gậy của ta!','Yêu quái, mời ăn cơm!','Yêu quái, ta sợ ngươi!','Yêu quái, chạy đi!'],correct:0,
+    explain:'\"吃一棒\" = ăn một gậy. \"俺老孙\" = ta đây (Ngộ Không tự xưng). Câu kinh điển của văn hoá TQ, ai cũng biết!',
+    slang:'🔥 Cách dùng ngoài đời: Khi muốn doạ ai đùa → \"吃我一拳！\" (ăn đấm của ta!) — phiên bản hiện đại.'},
+  {drama:'Hoa Thiên Cốt (花千骨)',context:'Sư phụ nói với đệ tử trong tiểu thuyết tu tiên',
+    line:'这世上，没有什么是永远的。',pinyin:'Zhè shìshàng, méiyǒu shénme shì yǒngyuǎn de.',
+    question:'Câu này mang ý nghĩa gì?',
+    opts:['Trên đời này, không gì là mãi mãi.','Trên đời này, mọi thứ đều tốt đẹp.','Trên đời này, ai cũng hạnh phúc.','Trên đời này, tiền là quan trọng nhất.'],correct:0,
+    explain:'\"永远\" = mãi mãi, \"没有什么\" = không gì. Câu triết lý phổ biến trong phim cổ trang và tiểu thuyết tu tiên.',
+    slang:'🔥 Từ vựng quan trọng: 永远 (yǒngyuǎn) = mãi mãi. \"我永远爱你\" = Anh yêu em mãi mãi — dùng cả trong đời thật!'}
+];
+let dramaIdx=0;
+function initDrama(){dramaIdx=0;renderDrama();}
+function renderDrama(){
+  if(dramaIdx>=dramaData.length){document.getElementById('dramaBody').innerHTML='<div style="text-align:center;padding:32px;"><div style="font-size:24px;font-weight:700;color:var(--gold);">🎬 Hết demo!</div><div style="color:rgba(255,255,255,0.6);margin:12px 0;">Bản đầy đủ có 100+ trích đoạn từ phim TQ nổi tiếng: Chân Hoàn Truyện, Trần Tình Lệnh, Lang Gia Bảng, và nhiều hơn nữa.</div><button class="btn-primary" onclick="initDrama()">Xem lại</button></div>';return;}
+  const d=dramaData[dramaIdx];
+  document.getElementById('dramaBody').innerHTML=
+    '<div class="drama-scene"><div class="drama-context">🎬 '+d.drama+' — '+d.context+'</div><div class="drama-line">「'+d.line+'」</div><div class="drama-pinyin">'+d.pinyin+'</div></div>'+
+    '<div class="drama-question">'+d.question+'</div>'+
+    '<div class="tone-options-grid">'+d.opts.map((o,i)=>'<button class="tone-opt" onclick="answerDrama('+i+','+d.correct+',this)">'+o+'</button>').join('')+'</div>'+
+    '<div id="dramaFeedback" style="display:none;margin-top:16px;"></div>';
+}
+function answerDrama(idx,correct,btn){
+  const opts=btn.parentElement.querySelectorAll('.tone-opt');
+  opts.forEach((o,i)=>{o.disabled=true;o.style.pointerEvents='none';if(i===correct)o.classList.add('correct');else if(i===idx&&i!==correct)o.classList.add('wrong');});
+  const d=dramaData[dramaIdx];
+  const fb=document.getElementById('dramaFeedback');fb.style.display='block';
+  fb.innerHTML='<div style="background:rgba(6,182,212,0.1);border-radius:12px;padding:16px;">'+(idx===correct?'<div style="color:#6EE7B7;font-weight:700;margin-bottom:8px;">✅ Chính xác!</div>':'<div style="color:#FCA5A5;font-weight:700;margin-bottom:8px;">❌ Đáp án: '+d.opts[correct]+'</div>')+'<div style="color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;margin-bottom:8px;">'+d.explain+'</div><div style="color:var(--cyan);font-size:13px;">'+d.slang+'</div></div>'+
+    '<div style="text-align:center;margin-top:12px;"><button class="btn-primary" style="padding:10px 24px;font-size:14px;" onclick="dramaIdx++;renderDrama();">Phim tiếp →</button></div>';
+  if(idx===correct){addXP(12);addCombo();}else{resetCombo();}
+}
+
+// ========== SURVEY ==========
+function submitSurvey(){
+  const purposes=[],pains=[],features=[];
+  document.querySelectorAll('#surveyPurpose input:checked').forEach(i=>purposes.push(i.value));
+  document.querySelectorAll('#surveyPain input:checked').forEach(i=>pains.push(i.value));
+  document.querySelectorAll('#surveyFeature input:checked').forEach(i=>features.push(i.value));
+  const price=document.querySelector('#surveyPrice input:checked');
+  if(purposes.length===0&&pains.length===0){alert('Vui lòng chọn ít nhất 1 mục đích hoặc 1 khó khăn!');return;}
+  document.getElementById('surveyBtn').style.display='none';
+  document.getElementById('surveyResult').style.display='block';
+  const stats=document.getElementById('surveyStats');
+  stats.innerHTML='<div style="background:rgba(230,57,70,0.08);padding:12px 20px;border-radius:10px;"><div style="font-weight:700;color:var(--primary);">'+purposes.length+'</div><div style="font-size:12px;color:var(--gray);">Mục đích</div></div>'+
+    '<div style="background:rgba(230,57,70,0.08);padding:12px 20px;border-radius:10px;"><div style="font-weight:700;color:var(--primary);">'+pains.length+'</div><div style="font-size:12px;color:var(--gray);">Khó khăn</div></div>'+
+    '<div style="background:rgba(230,57,70,0.08);padding:12px 20px;border-radius:10px;"><div style="font-weight:700;color:var(--primary);">'+features.length+'</div><div style="font-size:12px;color:var(--gray);">Tính năng yêu thích</div></div>'+
+    (price?'<div style="background:rgba(230,57,70,0.08);padding:12px 20px;border-radius:10px;"><div style="font-weight:700;color:var(--primary);">'+price.value+'</div><div style="font-size:12px;color:var(--gray);">Ngân sách/tháng</div></div>':'');
+  shootConfetti();
+  fetch(GSHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({email:'(từ khảo sát)',purposes:purposes,pains:pains,price:price?price.value:'',features:features})}).catch(()=>{});
+}
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded',()=>{initStory();initFunny();initSpeed();initSlot();initScenes();initTones();initDrama();});
+</script>
+</body>
+</html>
