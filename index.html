@@ -260,72 +260,186 @@ footer{text-align:center;padding:32px;color:var(--gray);font-size:13px;backgroun
 .drama-pinyin{font-size:13px;color:var(--gold);}
 .drama-question{color:white;font-size:14px;font-weight:600;margin:16px 0 10px;}
 
+/* ===== MOBILE RESPONSIVE ===== */
 @media(max-width:768px){
-  nav{padding:10px 16px;}
-  .nav-logo{font-size:20px;}
+  /* Coming Soon banner */
+  .coming-soon-bar{font-size:11px !important;padding:7px 12px !important;line-height:1.3 !important;}
+
+  /* Nav */
+  nav{padding:8px 12px;top:32px !important;}
+  .nav-logo{font-size:18px;}
   .nav-logo span{display:none;}
-  .nav-cta{padding:8px 16px;font-size:13px;}
-  .hero{padding:120px 16px 60px;min-height:auto;}
-  .hero::before{font-size:150px;}
-  .hero h1{font-size:28px;}
-  .hero p{font-size:15px;margin-bottom:24px;}
-  .hero-buttons{flex-direction:column;align-items:center;gap:10px;}
-  .btn-primary,.btn-secondary{width:100%;max-width:300px;padding:14px 24px;font-size:15px;text-align:center;}
-  .hero-stats{gap:16px;margin-top:32px;}
-  .stat-num{font-size:22px;}
-  .stat-label{font-size:11px;}
-  section{padding:48px 16px;}
-  .section-title{font-size:24px;margin-bottom:8px;}
-  .section-sub{font-size:14px;margin-bottom:32px;}
-  .problem-grid{grid-template-columns:1fr;}
-  .problem-card{padding:20px;}
-  .problem-card h3{font-size:16px;}
-  .problem-card p{font-size:13px;}
-  .paths-grid{grid-template-columns:1fr 1fr;gap:12px;}
-  .path-card{padding:18px;}
-  .path-icon{font-size:28px;margin-bottom:8px;}
-  .path-card h3{font-size:15px;}
-  .path-card p{font-size:12px;}
-  .char-grid{grid-template-columns:1fr 1fr;gap:10px;}
-  .char-card{padding:14px;}
-  .char-avatar{width:48px;height:48px;font-size:22px;}
-  .char-card h3{font-size:13px;}
-  .daily-cards{grid-template-columns:1fr;}
-  .demo-section{padding:48px 12px;}
-  .demo-tabs{gap:4px;margin-bottom:16px;}
-  .demo-tab{padding:6px 10px;font-size:11px;}
-  .game-bar{padding:8px 12px;gap:8px;}
-  .game-stat .val{font-size:15px;}
-  .chat-container,.minigame-container{border-radius:14px;}
-  .chat-messages{min-height:300px;max-height:400px;padding:12px;}
-  .msg{font-size:13px;padding:10px 13px;}
-  .chat-option{padding:10px 13px;font-size:13px;}
-  .speed-question .char{font-size:36px;}
-  .speed-options,.tone-options-grid{grid-template-columns:1fr 1fr;gap:8px;}
-  .speed-opt,.tone-opt{padding:12px;font-size:13px;}
-  .tone-char{font-size:48px;}
-  .features-grid{grid-template-columns:1fr;}
-  .feature-card{padding:20px;}
-  .survey-grid{grid-template-columns:1fr;}
-  .survey-group{padding:18px;}
-  .cta h2{font-size:24px;}
-  .cta p{font-size:14px;}
-  .cta-form{flex-direction:column;align-items:center;}
-  .cta-input{min-width:auto;width:100%;max-width:320px;padding:14px 16px;font-size:15px;}
-  .cta-btn{width:100%;max-width:320px;padding:14px 24px;font-size:15px;}
-  .scene-selector{gap:4px;}
-  .scene-btn{padding:6px 10px;font-size:11px;}
-  .slot-machine{gap:6px;}
-  .slot-reel{width:68px;height:88px;font-size:30px;}
+  .nav-cta{padding:7px 14px;font-size:12px;border-radius:6px;}
+
+  /* Hero — compact */
+  .hero{padding:100px 16px 40px;min-height:auto;}
+  .hero::before{font-size:120px;opacity:0.03;}
+  .hero-badge{font-size:11px;padding:5px 12px;margin-bottom:16px;}
+  .hero h1{font-size:24px;margin-bottom:12px;}
+  .hero p{font-size:13px;margin-bottom:20px;line-height:1.6;}
+  .hero-buttons{flex-direction:column;align-items:center;gap:8px;}
+  .btn-primary,.btn-secondary{width:100%;max-width:280px;padding:12px 20px;font-size:14px;text-align:center;border-radius:10px;}
+  .btn-secondary{padding:10px 20px;}
+  .hero-stats{gap:12px;margin-top:24px;}
+  .stat-num{font-size:20px;}
+  .stat-label{font-size:10px;}
+
+  /* Sections */
+  section{padding:36px 14px;}
+  .container{padding:0;}
+  .section-title{font-size:20px;margin-bottom:6px;}
+  .section-sub{font-size:13px;margin-bottom:24px;line-height:1.5;}
+
+  /* Problem */
+  .problem-grid{grid-template-columns:1fr;gap:12px;}
+  .problem-card{padding:16px;border-radius:12px;}
+  .problem-card h3{font-size:14px;margin-bottom:8px;}
+  .problem-card p{font-size:12px;}
+
+  /* Paths — 2 cột compact */
+  .paths-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .path-card{padding:14px;border-radius:14px;}
+  .path-icon{font-size:24px;margin-bottom:6px;}
+  .path-card h3{font-size:13px;}
+  .path-card .zh-name{font-size:11px;margin-bottom:6px;}
+  .path-card p{font-size:11px;margin-bottom:8px;line-height:1.4;}
+  .path-tags{gap:3px;}
+  .path-tag{font-size:9px;padding:2px 6px;}
+  .path-card.featured::after,.path-card.new-tag::after{font-size:9px;padding:3px 7px;top:10px;right:10px;}
+
+  /* Characters — 3 cột nhỏ gọn */
+  .char-grid{grid-template-columns:repeat(3,1fr);gap:8px;}
+  .char-card{padding:10px;border-radius:12px;}
+  .char-avatar{width:40px;height:40px;font-size:18px;margin-bottom:6px;}
+  .char-card h3{font-size:11px;}
+  .char-card .char-zh{font-size:10px;margin-bottom:2px;}
+  .char-card p{font-size:9px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .char-style{font-size:8px;padding:2px 5px;margin-top:4px;}
+  .char-cat{font-size:9px;margin-bottom:3px;}
+
+  /* Daily */
+  .daily-cards{grid-template-columns:1fr;gap:12px;}
+  .daily-card{padding:16px;border-radius:12px;}
+  .daily-icon{font-size:24px;margin-bottom:8px;}
+  .daily-card h4{font-size:14px;margin-bottom:6px;}
+  .daily-card p{font-size:12px;}
+
+  /* Demo */
+  .demo-section{padding:36px 10px;}
+  .demo-tabs{gap:3px;margin-bottom:14px;padding:0 4px;}
+  .demo-tab{padding:5px 8px;font-size:10px;border-radius:7px;}
+  .game-bar{padding:7px 10px;gap:6px;border-radius:10px;margin-bottom:14px;}
+  .xp-label{font-size:9px;}
+  .xp-bar{height:6px;}
+  .game-stat{padding:0 8px;}
+  .game-stat .val{font-size:14px;}
+  .game-stat .lbl{font-size:8px;}
+
+  /* Chat */
+  .chat-container,.minigame-container{border-radius:12px;}
+  .chat-header{padding:10px 14px;gap:10px;}
+  .chat-header-avatar{width:40px;height:40px;font-size:20px;}
+  .chat-header-info h4{font-size:13px;}
+  .chat-header-info p{font-size:10px;}
+  .chat-messages{min-height:240px;max-height:360px;padding:10px;gap:8px;}
+  .msg{font-size:12px;padding:9px 12px;border-radius:12px;max-width:88%;}
+  .msg .pinyin{font-size:10px;}
+  .msg .vn{font-size:10px;}
+  .msg-system,.msg-grammar,.msg-funny,.msg-culture,.msg-hanzi{font-size:11px;padding:10px 14px;}
+  .chat-input-area{padding:10px;}
+  .chat-option{padding:9px 12px;font-size:12px;border-radius:10px;}
+  .chat-option .opt-vn{font-size:10px;}
+
+  /* Speed Quiz */
+  .minigame-header{padding:12px 16px;}
+  .minigame-header h4{font-size:14px;}
+  .minigame-header p{font-size:11px;}
+  .minigame-body{padding:14px;}
+  .speed-timer{height:5px;margin-bottom:14px;}
+  .speed-question .char{font-size:32px;}
+  .speed-question .hint{font-size:12px;}
+  .speed-options{grid-template-columns:1fr 1fr;gap:6px;}
+  .speed-opt{padding:10px;font-size:12px;border-radius:10px;}
+  .speed-score .big{font-size:36px;}
+
+  /* Tones */
+  .tone-char{font-size:40px;}
+  .tone-options-grid{grid-template-columns:1fr 1fr;gap:6px;}
+  .tone-opt{padding:10px;border-radius:10px;}
+  .tone-opt .tone-mark{font-size:20px;}
+  .tone-opt .tone-name{font-size:10px;}
+
+  /* Drama */
+  .drama-scene{padding:12px;border-radius:10px;}
+  .drama-context{font-size:10px;}
+  .drama-line{font-size:16px;}
+  .drama-pinyin{font-size:11px;}
+  .drama-question{font-size:12px;}
+
+  /* Scenes */
+  .scene-selector{gap:3px;}
+  .scene-btn{padding:5px 8px;font-size:10px;border-radius:6px;}
+
+  /* Slot */
+  .slot-machine{gap:5px;margin:14px 0;}
+  .slot-reel{width:60px;height:76px;font-size:26px;border-radius:10px;}
+  .slot-meaning{font-size:12px;}
+  .slot-btn{padding:10px 24px;font-size:13px;border-radius:8px;}
+
+  /* Result */
+  .result-score-ring{width:90px;height:90px;border-width:5px;}
+  .result-score-num{font-size:28px;}
+  .result-breakdown{gap:16px;margin:14px 0;}
+  .result-stat .val{font-size:16px;}
+  .result-stat .lbl{font-size:9px;}
+  .result-msg{font-size:13px;margin:12px 0 20px;}
+  .badge{font-size:10px;padding:4px 10px;}
+
+  /* Features */
+  .features-grid{grid-template-columns:1fr;gap:12px;}
+  .feature-card{padding:18px;border-radius:12px;}
+  .feature-icon{font-size:24px;margin-bottom:8px;}
+  .feature-card h3{font-size:15px;margin-bottom:6px;}
+  .feature-card p{font-size:12px;}
+
+  /* Survey */
+  .survey-grid{grid-template-columns:1fr;gap:12px;}
+  .survey-group{padding:16px;border-radius:12px;}
+  .survey-group-title{font-size:14px;margin-bottom:12px;}
+  .survey-opt{padding:8px 10px;border-radius:8px;gap:8px;}
+  .survey-check{width:20px;height:20px;border-radius:5px;}
+  .survey-label{font-size:12px;}
+
+  /* CTA */
+  .cta{padding:36px 16px;}
+  .cta h2{font-size:22px;margin-bottom:12px;}
+  .cta p{font-size:13px;margin-bottom:24px;}
+  .cta-form{flex-direction:column;align-items:center;gap:8px;}
+  .cta-input{min-width:auto;width:100%;padding:12px 14px;font-size:14px;border-radius:10px;}
+  .cta-btn{width:100%;padding:12px 20px;font-size:14px;border-radius:10px;}
+  .cta-note{font-size:11px;margin-top:12px;}
+
+  /* Footer */
+  footer{padding:20px 16px;font-size:11px;}
 }
-@media(max-width:480px){
-  .hero h1{font-size:24px;}
-  .hero p{font-size:14px;}
-  .paths-grid,.char-grid{grid-template-columns:1fr;}
-  .speed-options,.tone-options-grid{grid-template-columns:1fr;}
-  .slot-reel{width:60px;height:76px;font-size:26px;}
-  .demo-tab{padding:5px 8px;font-size:10px;}
-  .chat-messages{min-height:260px;max-height:350px;}
+
+@media(max-width:420px){
+  .hero{padding:90px 12px 32px;}
+  .hero h1{font-size:21px;}
+  .hero p{font-size:12px;}
+  .hero-badge{font-size:10px;padding:4px 10px;}
+  .stat-num{font-size:18px;}
+  .paths-grid{grid-template-columns:1fr;gap:8px;}
+  .char-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .char-card p{display:none;}
+  .demo-tab{padding:4px 6px;font-size:9px;}
+  .chat-messages{min-height:200px;max-height:300px;}
+  .msg{font-size:11px;padding:8px 10px;}
+  .speed-options,.tone-options-grid{grid-template-columns:1fr;gap:5px;}
+  .slot-reel{width:52px;height:66px;font-size:22px;}
+  .cta h2{font-size:20px;}
+  .section-title{font-size:18px;}
+  .section-sub{font-size:12px;}
 }
 </style>
 </head>
@@ -334,7 +448,7 @@ footer{text-align:center;padding:32px;color:var(--gray);font-size:13px;backgroun
 <div class="combo-popup" id="comboPopup"></div>
 <div class="confetti-container" id="confettiBox"></div>
 
-<div style="background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:white;text-align:center;padding:10px 20px;font-size:13px;font-weight:600;position:fixed;top:0;width:100%;z-index:101;letter-spacing:0.5px;">🚀 COMING SOON — Đây là bản Demo trải nghiệm. Đăng ký bên dưới để nhận thông báo khi ra mắt chính thức!</div>
+<div class="coming-soon-bar" style="background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:white;text-align:center;padding:10px 20px;font-size:13px;font-weight:600;position:fixed;top:0;width:100%;z-index:101;letter-spacing:0.5px;">🚀 COMING SOON — Đây là bản Demo trải nghiệm. Đăng ký bên dưới để nhận thông báo khi ra mắt chính thức!</div>
 <nav style="top:38px;">
   <div class="nav-logo">说吧<span>ShuōBa</span></div>
   <button class="nav-cta" onclick="scrollTo('#demo')">Chơi thử Demo</button>
